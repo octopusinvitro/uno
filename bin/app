@@ -7,3 +7,4 @@ require "json"
 require "rest-client"
 
 require "deck"
+require "uno_server"
