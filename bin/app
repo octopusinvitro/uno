@@ -1,8 +1,11 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
 $LOAD_PATH.unshift File.join(File.dirname(__FILE__), '..', 'lib')
 
-require "sinatra"
-require "json"
-require "rest-client"
+require 'main'
+require 'uno/game'
+require 'uno/player_factory'
+require 'uno/server'
 
+Main.run!.new(UNO::Server.new(UNO::PlayerFactory.new, UNO::Game.new))

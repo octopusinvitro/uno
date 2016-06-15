@@ -1,0 +1,34 @@
+@charset "utf-8";
+
+$base-font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$base-font-size:   16pt;
+$base-font-weight: 400;
+$small-font-size:  $base-font-size * 0.7;
+$base-line-height: 1.5;
+
+/* colors */
+$text-color:       #34495e;
+$background-color: #fff;
+$link-color:       #1abc9c;
+$selection-color:  #bdc3c7;
+
+$uno-red:    #e74c3c;
+$uno-yellow: #f1c40f;
+$uno-green:  #2ecc71;
+$uno-blue:   #3498db;
+
+$uno-red-dark:     #c0392b;
+$uno-yellow-light: #FBEC9A;
+
+/* layout */
+$content-width: 35em;
+$spacing-unit:  1.5em;
+
+@import
+  "normalize",
+  "base",
+  "components",
+  "forminputs",
+  "formbuttons",
+  "mediaqueries",
+  "print";

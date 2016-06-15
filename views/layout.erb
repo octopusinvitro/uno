@@ -1,0 +1,71 @@
+<!doctype html>
+<html class="no-js" lang="">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title><%= @page.title %></title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <!-- Place favicon.ico in the root directory -->
+
+  <link href="https://fonts.googleapis.com/css?family=Lato:300,400,400italic,900" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="css/main.css">
+
+</head>
+<body>
+
+  <article class="container">
+
+    <!--[if lt IE 8]>
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <header class="site-header">
+      <h1><a href="/" class="site-title">UNO</a></h1>
+      <p class="site-subtitle">The card game for all ages!</p>
+    </header>
+
+    <div class="main">
+      <h2><%= @page.title %></h2>
+      <%= yield %>
+    </div>
+
+  </article>
+
+  <footer class="footer">
+    <p>Made with &#9829;</p>
+    <p><a href="https://github.com/octopusinvitro/uno">
+      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <use xlink:href="#github_icon"></use>
+      </svg>
+      Fork me!
+    </a></p>
+  </footer>
+
+  <!-- =========== -->
+  <!-- SVG SPRITES -->
+  <!-- =========== -->
+  <svg style="height:0;width:0;">
+    <defs>
+      <symbol id="retry-icon" viewBox="0 0 1000 1000">
+        <%= erb :_retry_icon %>
+      </symbol>
+
+      <symbol id="cards-icon" viewBox="5 5 90 90">
+        <%= erb :_cards_icon %>
+      </symbol>
+
+      <symbol id="deck-icon" viewBox="5 5 110 110">
+        <%= erb :_deck_icon %>
+      </symbol>
+
+      <symbol id="github_icon" viewBox="0 0 580 580">
+        <%= erb :_github_icon %>
+      </symbol>
+    </defs>
+  </svg>
+
+</body>
+</html>

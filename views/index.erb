@@ -1,0 +1,43 @@
+<p>Type your name to start playing:</p>
+
+<form method="<%= @page.method %>" action="<%= @page.action %>">
+
+  <div class="<%= @page.class %>">
+    <input name="name" id="name" type="text" class="input-type-text" autofocus>
+    <label for="name" class="input-label">
+      <span class="input-label__content">Enter your name</span>
+    </label>
+  </div>
+
+  <%= @page.status %>
+
+  <svg class="visuallyhidden">
+    <defs>
+      <clipPath id="clipBox" clipPathUnits="objectBoundingBox" stroke="transparent" >
+        <polygon points="0,0 0,1 0.35,1 0.35,0.6 0.65,0.6 0.65,1 1,1 1,0" />
+      </clipPath>
+    </defs>
+  </svg>
+
+  <% unless @page.joined %>
+  <a href="/" class="form-button">
+    <span class="button-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <use xlink:href="#retry-icon"></use>
+      </svg>
+    </span>
+    <span class="button-text">Try again</span>
+  </a>
+  <% end %>
+
+  <button type="submit" class="form-button">
+    <span class="button-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <use xlink:href="#cards-icon"></use>
+      </svg>
+    </span>
+    <span class="button-text"><%= @page.button_text %></span>
+  </button>
+
+</form>
+

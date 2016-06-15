@@ -1,0 +1,16 @@
+<p class="status"><span>Hey <strong><%= @page.name %></strong>! <%= @page.status %> <%= @page.max_players_info %></span></p>
+
+<p>These players have joined:</p>
+
+<ul class="players-joined">
+<% @page.players.each do |player| %>
+  <li><%= player.name %><%= @page.you(player) %></li>
+<% end %>
+</ul>
+
+<p>Do you want to start the game?</p>
+<a href="/deal"><%= @page.button_text %></a>
+
+<% if @page.can_join? %>
+<a href="/">Add another player</a>
+<% end %>

@@ -1,0 +1,42 @@
+<p class="status"><%= @page.status %></p>
+
+<% if @page.dealt %>
+<p>You played <strong><%= @page.top_card %></strong>.</p>
+
+<ul class="players-joined">
+<% @page.hands.each do |hand| %>
+  <li><%= hand[:name] %> played &nbsp;&nbsp;&nbsp;<strong><%= hand[:card] %></strong></li>
+<% end %>
+</ul>
+
+<p><%= @page.action_message %></p>
+
+<form action="/play" method="post">
+
+  <% if @page.choose? %>
+  <ul class="player-cards">
+    <% @page.cards.each_with_index do |card, i| %>
+    <li>
+      <label class="radio-label">
+        <input type="radio" name="card" value="<%= card %>" id="card-<%= i %>" class="visuallyhidden">
+        <span class="radio-label__content"><%= card %></span>
+      </label>
+    </li>
+    <% end %>
+  </ul>
+  <% end %>
+
+  <% if @page.skip? %>
+  <input class="visuallyhidden" type="hidden" name="top_card" value="<%= @page.last_card %>">
+  <% end %>
+
+  <button type="submit" class="form-button">
+    <span class="button-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <use xlink:href="#cards-icon"></use>
+      </svg>
+    </span>
+    <span class="button-text"><%= @page.button_text %></span>
+  </button>
+</form>
+<% end %>
