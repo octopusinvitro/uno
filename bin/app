@@ -8,3 +8,4 @@ require "rest-client"
 
 require "deck"
 require "uno_server"
+require "uno_client"
