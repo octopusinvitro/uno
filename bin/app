@@ -6,3 +6,4 @@ require "sinatra"
 require "json"
 require "rest-client"
 
+require "deck"
