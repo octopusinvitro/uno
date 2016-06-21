@@ -10,7 +10,7 @@ class UnoClient
 
   def join_game
     response = client.post(
-      base_url + '/join',
+      base_url + "/join",
       {
         data:   {name: name}.to_json,
         accept: :json
@@ -18,6 +18,18 @@ class UnoClient
     )
     JSON.parse(response, {symbolize_names: true})
   end
+
+  def get_cards
+    client.get(
+      base_url + "/cards",
+      {
+        params: {
+          name: name
+        }
+      }
+    )
+  end
+
   #
   # def get_cards
   #   response = RestClient.get 'http://localhost:8080/cards', {:params => {:name => @name}}
