@@ -2,17 +2,12 @@ describe "UnoClient" do
 
   let(:client) {double(RestClient)}
   let(:url)    {"http://localhost:8080"}
-  let(:uno)    {UnoClient.new("Jon", client, url)}
+  let(:uno)    {UnoClient.new({name: "Jon", client: client, base_url: url})}
 
   describe "when joining the game" do
 
     before(:each) do
       allow(client).to receive(:post).and_return('{"response_key": "response_value"}')
-    end
-
-    it "sends a POST request to join the game" do
-      uno.join_game
-      expect(client).to have_received(:post).once
     end
 
     it "sends a POST request with the right parameters" do
@@ -21,7 +16,7 @@ describe "UnoClient" do
         accept: :json
       }
       uno.join_game
-      expect(client).to have_received(:post).with(url + "/join", params)
+      expect(client).to have_received(:post).once.with(url + "/join", params)
     end
 
     it "returns the right response" do
@@ -36,15 +31,10 @@ describe "UnoClient" do
       allow(client).to receive(:get).and_return('{"response_key": "response_value"}')
     end
 
-    it "sends a GET request to fetch the cards" do
-      uno.get_cards
-      expect(client).to have_received(:get).once
-    end
-
     it "sends a GET request with the right parameters" do
       params = {name: "Jon"}
       uno.get_cards
-      expect(client).to have_received(:get).with(url + "/cards", {params: params})
+      expect(client).to have_received(:get).once.with(url + "/cards", {params: params})
     end
 
     it "returns the right response" do
@@ -59,18 +49,13 @@ describe "UnoClient" do
       allow(client).to receive(:post).and_return('{"response_key": "response_value"}')
     end
 
-    it "sends a POST request to deal the cards" do
-      uno.deal
-      expect(client).to have_received(:post).once
-    end
-
     it "sends a POST request with no data" do
       params = {
         data: '{}',
         accept: :json
       }
       uno.deal
-      expect(client).to have_received(:post).with(url + "/deal", params)
+      expect(client).to have_received(:post).once.with(url + "/deal", params)
     end
 
     it "returns the right response" do
@@ -78,6 +63,5 @@ describe "UnoClient" do
     end
 
   end
-
 
 end
