@@ -53,4 +53,31 @@ describe "UnoClient" do
 
   end
 
+  describe "when dealing the cards" do
+
+    before(:each) do
+      allow(client).to receive(:post).and_return('{"response_key": "response_value"}')
+    end
+
+    it "sends a POST request to deal the cards" do
+      uno.deal
+      expect(client).to have_received(:post).once
+    end
+
+    it "sends a POST request with no data" do
+      params = {
+        data: '{}',
+        accept: :json
+      }
+      uno.deal
+      expect(client).to have_received(:post).with(url + "/deal", params)
+    end
+
+    it "returns the right response" do
+      expect(uno.deal).to eq('{"response_key": "response_value"}')
+    end
+
+  end
+
+
 end

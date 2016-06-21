@@ -30,15 +30,14 @@ class UnoClient
     )
   end
 
-  #
-  # def get_cards
-  #   response = RestClient.get 'http://localhost:8080/cards', {:params => {:name => @name}}
-  #   puts response
-  # end
-  #
-  # def deal
-  #   response = RestClient.post 'http://localhost:8080/deal', :data =>{}.to_json, :accept => :json
-  #   puts response
-  # end
+  def deal
+    client.post(
+      base_url + "/deal",
+      {
+        data: {}.to_json,
+        accept: :json
+      }
+    )
+  end
 
 end
