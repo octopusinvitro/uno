@@ -14,32 +14,58 @@ class Main < Sinatra::Base
     # @status = return_message[:status]
     # @cards  = return_message[:cards]
     # erb :cards
-    return_message.to_json
+    cards_message.to_json
+  end
+
+  post "/join" do
+    join_message.to_json
   end
 
   private
 
-  def return_message
-    has_name? ? build_return_message(params) : {}
+  def cards_message
+    params.has_key?("name") ? build_cards_message : {}
   end
 
-  def has_name?
-    params.has_key?("name")
+  def join_message
+    params.has_key?("data") ? build_join_message : {}
   end
 
-  def build_return_message(params)
-    return_message = {}
-    return_message[:cards]  = see_cards_of(params["name"])
-    return_message[:status] = status(return_message[:cards])
-    return_message
+  def build_cards_message
+    cards = see_cards_of(params["name"])
+    {
+      cards:  cards,
+      status: cards_status(cards)
+    }
+  end
+
+  def build_join_message
+    data = parse(params["data"])
+    {status: join_status(data)}
   end
 
   def see_cards_of(name)
     uno.see_cards_of(name)
   end
 
-  def status(cards)
-    cards.empty? ? Messages::NOT_JOINED : Messages::SUCCESS
+  def parse(source, params = {})
+    JSON.parse(source, params)
+  end
+
+  def cards_status(cards)
+    cards.empty? ? Messages::USER_NOT_FOUND : Messages::SUCCESS
+  end
+
+  def join_status(data)
+    joined?(data) ? Messages::WELCOME : Messages::GAME_IS_FULL
+  end
+
+  def joined?(data)
+    data.has_key?("name") && join_game(data[:name])
+  end
+
+  def join_game(name)
+    uno.join_game(name)
   end
 
 end
