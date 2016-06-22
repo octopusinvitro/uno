@@ -10,5 +10,6 @@ require "messages"
 require "deck"
 require "uno_server"
 require "uno_client"
+require "main_helper"
 require "main"
 Main.run!
