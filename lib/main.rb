@@ -21,6 +21,10 @@ class Main < Sinatra::Base
     join_message.to_json
   end
 
+  post "/deal" do
+    deal_message.to_json
+  end
+
   private
 
   def cards_message
@@ -29,6 +33,10 @@ class Main < Sinatra::Base
 
   def join_message
     params.has_key?("data") ? build_join_message : {}
+  end
+
+  def deal_message
+    {status: deal_status}
   end
 
   def build_cards_message
@@ -44,28 +52,36 @@ class Main < Sinatra::Base
     {status: join_status(data)}
   end
 
-  def see_cards_of(name)
-    uno.see_cards_of(name)
-  end
-
-  def parse(source, params = {})
-    JSON.parse(source, params)
-  end
-
   def cards_status(cards)
-    cards.empty? ? Messages::USER_NOT_FOUND : Messages::SUCCESS
+    cards.empty? ? Messages::CARDS_FAILURE : Messages::CARDS_SUCCESS
   end
 
   def join_status(data)
-    joined?(data) ? Messages::WELCOME : Messages::GAME_IS_FULL
+    joined?(data) ? Messages::JOIN_SUCCESS : Messages::JOIN_FAILURE
+  end
+
+  def deal_status
+    deal? ? Messages::DEAL_SUCCESS : Messages::DEAL_FAILURE
   end
 
   def joined?(data)
     data.has_key?("name") && join_game(data[:name])
   end
 
+  def see_cards_of(name)
+    uno.see_cards_of(name)
+  end
+
   def join_game(name)
     uno.join_game(name)
+  end
+
+  def deal?
+    uno.deal
+  end
+
+  def parse(source, params = {})
+    JSON.parse(source, params)
   end
 
 end

@@ -11,7 +11,7 @@ describe "Main" do
       get "/cards", "name" => "Jon"
       response = {
         cards:  uno.see_cards_of("Jon"),
-        status: Messages::SUCCESS
+        status: Messages::CARDS_SUCCESS
       }
       expect_response_to_eq(response)
     end
@@ -20,7 +20,7 @@ describe "Main" do
       get "/cards", "name" => "Jon"
       response = {
         cards:  [],
-        status: Messages::USER_NOT_FOUND
+        status: Messages::CARDS_FAILURE
       }
       expect_response_to_eq(response)
     end
@@ -36,26 +36,43 @@ describe "Main" do
 
     it "welcomes the player" do
       post "/join", "data" => '{"name": "Jon"}'
-      response = {status: Messages::WELCOME}
+      response = {status: Messages::JOIN_SUCCESS}
       expect_response_to_eq(response)
     end
 
     it "sends an error message if no name is sent" do
       post "/join", "data" => '{}'
-      response = {status: Messages::GAME_IS_FULL}
+      response = {status: Messages::JOIN_FAILURE}
       expect_response_to_eq(response)
     end
 
     it "sends an error message if player could not join the game" do
       fill_the_game
       post "/join", "data" => '{"name": "Jon"}'
-      response = {status: Messages::GAME_IS_FULL}
+      response = {status: Messages::JOIN_FAILURE}
       expect_response_to_eq(response)
     end
 
     it "returns an empty response if no data is sent" do
       post "/join"
       expect_response_to_eq({})
+    end
+
+  end
+
+  describe "when it's deal time" do
+
+    it "deals cards to the players" do
+      uno.join_game("Jon")
+      post "/deal"
+      response = {status: Messages::DEAL_SUCCESS}
+      expect_response_to_eq(response)
+    end
+
+    it "sends an error message if there are no players to deal to" do
+      post "/deal"
+      response = {status: Messages::DEAL_FAILURE}
+      expect_response_to_eq(response)
     end
 
   end

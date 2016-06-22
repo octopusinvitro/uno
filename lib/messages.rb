@@ -1,6 +1,8 @@
 module Messages
-  USER_NOT_FOUND = "Sorry - it appears you are not part of the game"
-  GAME_IS_FULL   = "Sorry - game not accepting new players"
-  SUCCESS = "Success"
-  WELCOME = "Welcome!"
+  CARDS_SUCCESS = "Success"
+  JOIN_SUCCESS  = "Welcome!"
+  DEAL_SUCCESS  = "Done!"
+  CARDS_FAILURE = "Sorry - it appears you are not part of the game"
+  JOIN_FAILURE  = "Sorry - game not accepting new players"
+  DEAL_FAILURE  = "Sorry - there are no players to deal to"
 end
