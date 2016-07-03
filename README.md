@@ -6,6 +6,8 @@
 
 A Sinatra implementation of the game UNO.
 
+![Screenshot](screenshot.png)
+
 The business logic of the main class is extracted in a service object (`main_helper`).
 
 * The views are used when using the app through the web.
@@ -129,6 +131,8 @@ I had to change them to `attr_reader :max_players, :max_cards` because the const
 * [x] `UnoServer`'s boolean methods don't have a `?`
 * [ ] Find a way to implement command-query separation in `UnoServer`'s boolean methods
 * [ ] Extract the empty `<p>` tags (i.e. `join_status`) into `locals`, and the `locals` and views logic to a `presenter` object injected in the main.
+* Finish the game AI implementation.
+* Find a way to clean the controller, still too much business logic for my taste.
 
 
 ## License
