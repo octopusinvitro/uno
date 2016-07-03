@@ -9,4 +9,5 @@ group :test do
   gem "rack-test"
   gem "rspec",  ">=3.4.0", :require => "spec"
   gem "pry"
+  gem 'coveralls', require: false
 end

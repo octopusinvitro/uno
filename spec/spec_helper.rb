@@ -1,5 +1,8 @@
 ENV["RACK_ENV"] = "test"
 
+require 'coveralls'
+Coveralls.wear!
+
 require "sinatra"
 require "rack/test"
 require "json"

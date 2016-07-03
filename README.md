@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/octopusinvitro/uno.svg?branch=master)](https://travis-ci.org/octopusinvitro/uno)
 [![build status](https://gitlab.com/me-stevens/uno/badges/master/build.svg)](https://gitlab.com/me-stevens/uno/commits/master)
-
+[![Coverage Status](https://coveralls.io/repos/github/octopusinvitro/uno/badge.svg?branch=master)](https://coveralls.io/github/octopusinvitro/uno?branch=master)
 
 # Readme
 
