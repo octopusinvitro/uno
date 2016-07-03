@@ -6,6 +6,12 @@
 
 A Sinatra implementation of the game UNO.
 
+The business logic of the main class is extracted in a service object (`main_helper`).
+
+* The views are used when using the app through the web.
+* The `UnoClient` class is used when using the app through a terminal (for json only).
+* The `UnoServer` class is the one used for both.
+
 
 ## How to use this project
 
@@ -105,6 +111,7 @@ I had to change them to `attr_reader :max_players, :max_cards` because the const
 * [ ] Possible errors?
 * [x] `UnoServer`'s boolean methods don't have a `?`
 * [ ] Find a way to implement command-query separation in `UnoServer`'s boolean methods
+* [ ] Extract the empty `<p>` tags (i.e. `join_status`) into `locals`, and the `locals` and views logic to a `presenter` object injected in the main.
 
 
 ## License

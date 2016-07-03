@@ -10,4 +10,8 @@ module Messages
   JOIN_TITLE    = "UNO :: Join the game"
   DEAL_TITLE    = "UNO :: Deal cards"
   CARDS_TITLE   = "UNO :: Get cards"
+
+  def self.max_players_info(max_players)
+    "Remember that there is a maximum of #{max_players} players."
+  end
 end

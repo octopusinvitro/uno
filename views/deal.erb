@@ -1,0 +1,36 @@
+<p class="status"><%= deal_status %></p>
+
+<p>Card over the table is <strong><%= top_card %></strong>.</p>
+
+<ul class="players-joined">
+<% players.each do |player| %>
+  <li><%= player[:name] %> played: <strong>card</strong>.</li>
+<% end %>
+</ul>
+
+<p>Choose a card to play from your hand:</p>
+
+<form action="/cards" method="post">
+
+  <ul class="player-cards">
+    <% players.last[:cards].each_with_index do |card, i| %>
+    <li>
+      <label class="radio-label">
+        <input type="radio" name="player-cards" value="<%= card %>" id="card-<%= i %>" class="visuallyhidden">
+        <span class="radio-label__content"><%= card %></span>
+      </label>
+    </li>
+    <% end %>
+  </ul>
+
+  <button type="submit" class="form-button">
+    <span class="button-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <use xlink:href="#cards-icon"></use>
+      </svg>
+    </span>
+    <span class="button-text">Play card!</span>
+  </button>
+</form>
+
+<a href="/">Home</a>

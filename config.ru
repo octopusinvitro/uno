@@ -8,4 +8,5 @@ require "./lib/uno_server"
 require "./lib/uno_client"
 require "./lib/main_helper"
 require "./lib/main"
-run Main
+
+run Main.new(MainHelper.new(UnoServer.new))

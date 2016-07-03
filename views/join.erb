@@ -1,0 +1,14 @@
+<p class="status"><span>Hey <strong><%= name %></strong>! <%= join_status %> <%= max_players_info %></span></p>
+
+<p>These players have also joined:</p>
+
+<ul class="players-joined">
+<% players.each do |player| %>
+<%   you = (player == players.last) ? " (you)" : "" %>
+  <li><%= player[:name] %><%= you %></li>
+<% end %>
+</ul>
+
+<p>Do you want to play with them?</p>
+<a href="/deal">Yes! Start game!</a>
+<a href="/">Add another player</a>
