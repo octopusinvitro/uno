@@ -1,0 +1,163 @@
+// No parent-child relationship
+%border-box {
+  box-sizing: border-box;
+}
+
+%no-bullets {
+  list-style: none;
+}
+
+.small {
+  font-size: $small-font-size;
+}
+
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.container {
+  flex: 1;
+  margin: 0 auto;
+  width: 100%;
+  max-width: $content-width;
+}
+
+.main {
+  @extend %border-box;
+  margin: -5em auto 1em;
+  padding: 5em 1em 2em;
+  background-color: #fff;
+}
+
+.footer {
+  @extend %border-box;
+  padding: 1em 0;
+  @extend .small;
+  text-align: center;
+}
+
+.site-header,
+.footer {
+  background-color: #fafafa;
+}
+
+.site-header {
+  position: relative;
+  z-index: 1;
+  max-width: 10em;
+  margin: 0 auto;
+  padding: 0 1em 1em;
+  border-radius: 0 0 1em 1em;
+  text-align: center;
+
+  h1 {
+    margin: 0 auto;
+    font-size: 1em;
+  }
+
+  a {
+    color: $text-color;
+  }
+}
+
+.site-title {
+  line-height: 2.5em;
+  font-size:   3em;
+  font-weight: 900;
+  text-shadow: -.05em .05em 0 #fafafa,
+               -.12em .12em 0 #95a5a6;
+}
+
+.site-subtitle {
+  margin: 0;
+  font-size: .7em;
+  font-weight: 700;
+}
+
+.status {
+  @extend %border-box;
+  display: flex;
+  align-items: center;
+  min-height: 3em;
+  padding-left: 4em;
+  @extend .small;
+  color: $uno-red;
+  background: transparent url("/img/layout/bell.svg") top left no-repeat;
+  background-size: 3em;
+}
+
+.players-joined {
+  @extend %no-bullets;
+
+  li {
+    @extend %border-box;
+    display: flex;
+    align-items: center;
+    min-height: 2em;
+    margin: .5em 0;
+    padding-left: 3em;
+    background: transparent url("/img/layout/player.svg") top left no-repeat;
+    background-size: 2em;
+  }
+}
+
+.player-cards {
+  @extend %no-bullets;
+
+  li {
+    position: relative;
+  }
+}
+
+/******************
+     MAIN
+******************/
+.main {
+  a {
+    position: relative;
+    display: inline-block;
+    padding: .1em .65em .1em;
+    transition: color 0.3s;
+
+    &:hover,
+    &:focus {
+      outline: none;
+      color: $text-color;
+    }
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: $link-color;
+      transition: transform 0.3s;
+      transform: scale(0.85);
+    }
+
+    &::after {
+      opacity: 0;
+      transition: top 0.3s, opacity 0.3s, transform 0.3s, height 0.3s, background 0.3s;
+    }
+
+    &:hover::before,
+    &:hover::after,
+    &:focus::before,
+    &:focus::after {
+      transform: scale(1);
+      height: 3px;
+      background: $text-color;
+    }
+
+    &:hover::after,
+    &:focus::after {
+      top: 0%;
+      opacity: 1;
+    }
+  }
+}

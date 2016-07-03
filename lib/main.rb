@@ -10,6 +10,7 @@ class Main < Sinatra::Base
   set :port, 8080
   set :environment, :production
   set :views,         "#{settings.root}/../views"
+  set :public_folder, "#{settings.root}/../public"
 
   not_found do
     status 404

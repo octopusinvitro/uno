@@ -98,6 +98,23 @@ Open your browser and go to http://localhost:9292/
 The `rerun` gem watches for changes in your files and reloads the server.
 
 
+## Sass and JavaScript
+
+If you make changes to the CSS or JS, you have to run gulp. First, install all dependencies:
+
+```bash
+$ npm install
+```
+
+Then run gulp:
+
+```bash
+$ gulp
+```
+
+By default Sinatra will look for static files inside a `public` folder under the root directory, that's why gulp spits everything in there.
+
+
 ## Comments
 
 It's funny how constants are not constant in Ruby.

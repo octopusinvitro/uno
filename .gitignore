@@ -53,4 +53,7 @@ build-iPhoneSimulator/
 .rvmrc
 
 
+*.map
+.sass-cache
+node_modules
 .coveralls.yml

@@ -1,0 +1,22 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+
+    octopusinvitro -- Space Traveller -- @octopusinvitro
+
+# ATTRIBUTIONS
+
+    Cards icon by Chad Holmes.
+    Card draw icon by Faithtoken under CC BY 3.0
+
+# THANKS
+
+    To the Universe, who eventually gave raise to humanity.
+    Although many think that was not a very clever move.
+
+# TECHNOLOGY COLOPHON
+
+    Ruby, Sinatra
+    CSS3, HTML5
+    jQuery, Modernizr, Normalize.css
