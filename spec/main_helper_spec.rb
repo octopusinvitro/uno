@@ -4,65 +4,74 @@ describe "MainHelper" do
   let(:helper) {MainHelper.new(uno)}
 
   describe "when asking for the join response" do
-    it "builds join message if params contains data" do
-      params = {"data" => '{"name": "Jon"}'}
-      expect(helper.join_response(params)).to eq({status: Messages::JOIN_SUCCESS})
-    end
-
-    it "returns an error message if there is no name in the data" do
-      params = {"data" => '{}'}
-      expect(helper.join_response(params)).to eq({status: Messages::JOIN_FAILURE})
+    it "builds join message if params contains a name" do
+      params   = {"name" => "Jane"}
+      response = {status: Messages::JOIN_SUCCESS, joined: true, players: uno.players}
+      expect(helper.join_response(params)).to eq(response)
     end
 
     it "returns an error message if the game is full" do
       fill_the_game
-      params = {"data" => '{"name": "Jon"}'}
-      expect(helper.join_response(params)).to eq({status: Messages::JOIN_FAILURE})
+      params   = {"name" => "Jane"}
+      response = {status: Messages::JOIN_FAILURE, joined: false, players: uno.players}
+      expect(helper.join_response(params)).to eq(response)
     end
 
-    it "returns nothing if params contains no data" do
-      params = {}
-      expect(helper.join_response(params)).to eq({})
+    it "returns an error message if the name is empty" do
+      params   = {"name" => ""}
+      response = {status: Messages::JOIN_FAILURE, joined: false, players: []}
+      expect(helper.join_response(params)).to eq(response)
+    end
+
+    it "returns an error message if there is no name in the data" do
+      params   = {}
+      response = {status: Messages::JOIN_FAILURE, joined: false, players: []}
+      expect(helper.join_response(params)).to eq(response)
     end
   end
 
   describe "when asking for the deal response" do
-    it "builds deal message if it there are players" do
-      uno.join_game("Jon")
-      expect(helper.deal_response).to eq({status: Messages::DEAL_SUCCESS})
+    it "returns an error message if there are no players" do
+      expect(helper.deal_response[:status]).to eq(Messages::DEAL_FAILURE)
+      expect(helper.deal_response[:dealt]).to be(false)
     end
 
-    it "returns an error message if there are no players" do
-      expect(helper.deal_response).to eq({status: Messages::DEAL_FAILURE})
+    it "builds deal message if there are players" do
+      uno.join_game?("Jane")
+      expect(helper.deal_response[:status]).to eq(Messages::DEAL_SUCCESS)
+      expect(helper.deal_response[:dealt]).to be(true)
     end
   end
 
   describe "when asking for the cards response" do
-    it "builds cards message if params contains a valid name" do
-      uno.join_game("Jon")
-      uno.deal
-      params = {"name" => "Jon"}
-      expect(helper.cards_response(params)[:cards]).to  eq(uno.see_cards_of("Jon"))
-      expect(helper.cards_response(params)[:status]).to eq(Messages::CARDS_SUCCESS)
-    end
-
-    it "returns an error message if the player has no cards" do
-      uno.join_game("Jon")
-      params = {"name" => "Jon"}
-      expect(helper.cards_response(params)[:cards]).to  eq(uno.see_cards_of("Jon"))
-      expect(helper.cards_response(params)[:status]).to eq(Messages::CARDS_FAILURE)
-    end
-
-    it "returns an error message if the player is not in the game" do
-      params = {"name" => "Jon"}
-      expect(helper.cards_response(params)[:cards]).to  eq([])
-      expect(helper.cards_response(params)[:status]).to eq(Messages::CARDS_FAILURE)
-    end
-
     it "returns nothing if params contains no name" do
       params = {}
       expect(helper.cards_response(params)).to eq({})
     end
+
+    it "builds cards message if params contains a valid name" do
+      uno.join_game?("Jane")
+      uno.deal?
+      params = {"name" => "Jane"}
+      expect(helper.cards_response(params)[:cards]).to  eq(uno.see_cards_of("Jane"))
+      expect(helper.cards_response(params)[:status]).to eq(Messages::CARDS_SUCCESS)
+    end
+
+    it "returns an error message if the player has no cards" do
+      uno.join_game?("Jane")
+      params = {"name" => "Jane"}
+      expect(helper.cards_response(params)[:cards]).to  eq(uno.see_cards_of("Jane"))
+      expect(helper.cards_response(params)[:status]).to eq(Messages::CARDS_FAILURE)
+    end
+
+    it "returns an error message if the player is not in the game" do
+      params = {"name" => "Jane"}
+      expect(helper.cards_response(params)[:cards]).to  eq([])
+      expect(helper.cards_response(params)[:status]).to eq(Messages::CARDS_FAILURE)
+    end
   end
 
+  it "return the maximum number of players" do
+    expect(helper.max_players).to eq(uno.max_players)
+  end
 end

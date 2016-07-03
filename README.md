@@ -99,6 +99,13 @@ In the `UnoServer` class, I had initially `MAX_PLAYERS = 4` and `MAX_CARDS = 7`.
 I had to change them to `attr_reader :max_players, :max_cards` because the constants can be overwritten.
 
 
+## To do
+
+* [ ] What if a player's name already exists?
+* [ ] Possible errors?
+* [x] `UnoServer`'s boolean methods don't have a `?`
+* [ ] Find a way to implement command-query separation in `UnoServer`'s boolean methods
+
 
 ## License
 

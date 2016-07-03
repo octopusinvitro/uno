@@ -113,10 +113,10 @@ RSpec.configure do |config|
   Kernel.srand config.seed
 =end
   def fill_the_game
-    uno.join_game("Jane")
-    uno.join_game("Joe")
-    uno.join_game("Moe")
-    uno.join_game("May")
+    uno.join_game?("Jane")
+    uno.join_game?("Joe")
+    uno.join_game?("Moe")
+    uno.join_game?("May")
   end
 
 end

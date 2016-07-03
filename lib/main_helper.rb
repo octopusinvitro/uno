@@ -5,24 +5,74 @@ class MainHelper
   end
 
   def join_response(params)
-    params.has_key?("data") ? build_join_response(params) : {}
+    valid?(params) ? join_success : join_failure
   end
 
   def deal_response
-    {status: deal_status}
+    deal? ? deal_success : deal_failure
   end
 
   def cards_response(params)
     params.has_key?("name") ? build_cards_response(params) : {}
   end
 
+  def max_players
+    uno.max_players
+  end
+
   private
 
   attr_reader :uno
 
-  def build_join_response(params)
-    data = parse(params["data"])
-    {status: join_status(data)}
+  def valid?(params)
+    params.has_key?("name") && !params["name"].empty? && join_game?(params["name"])
+  end
+
+  def join_game?(name)
+    uno.join_game?(name)
+  end
+
+  def join_success
+    {
+      status:  Messages::JOIN_SUCCESS,
+      joined:  true,
+      players: uno.players
+    }
+  end
+
+  def join_failure
+    {
+      status:  Messages::JOIN_FAILURE,
+      joined:  false,
+      players: uno.players
+    }
+  end
+
+  def deal?
+    uno.deal?
+  end
+
+  def deal_success
+    {
+      status:   Messages::DEAL_SUCCESS,
+      dealt:    true,
+      players:  uno.players,
+      top_card: top_card
+    }
+  end
+
+  def deal_failure
+    {
+      status:  Messages::DEAL_FAILURE,
+      dealt:   false,
+      players: uno.players,
+      top_card: ""
+    }
+  end
+
+  def top_card
+    uno.flip_top_card
+    uno.pool.first
   end
 
   def build_cards_response(params)
@@ -33,32 +83,12 @@ class MainHelper
     }
   end
 
-  def join_status(data)
-    joined?(data) ? Messages::JOIN_SUCCESS : Messages::JOIN_FAILURE
-  end
-
-  def deal_status
-    deal? ? Messages::DEAL_SUCCESS : Messages::DEAL_FAILURE
+  def see_cards_of(name)
+    uno.see_cards_of(name)
   end
 
   def cards_status(cards)
     cards.empty? ? Messages::CARDS_FAILURE : Messages::CARDS_SUCCESS
-  end
-
-  def joined?(data)
-    data.has_key?("name") && join_game(data[:name])
-  end
-
-  def join_game(name)
-    uno.join_game(name)
-  end
-
-  def deal?
-    uno.deal
-  end
-
-  def see_cards_of(name)
-    uno.see_cards_of(name)
   end
 
   def parse(source, params = {})
