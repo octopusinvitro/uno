@@ -1,52 +1,61 @@
 class UnoServer
 
-  attr_reader :deck, :hands
-
-  MAX_HANDS = 4
-  MAX_CARDS = 5
+  attr_reader :deck, :max_players, :max_cards, :pool, :players
 
   def initialize
-    @deck  = Deck.buildDeck
-    @hands = []
+    @deck        = Deck.buildDeck
+    @max_players = 4
+    @max_cards   = 7
+    reset
   end
 
-  def join_game name
+  def join_game? name
     player_joined = can_add_more?
     add(name) if player_joined
     player_joined
   end
 
-  def deal
+  def deal?
     can_deal = has_players?
     deal_cards if can_deal
     can_deal
   end
 
   def see_cards_of name
-    player = hands.find { |player| player[:name] == name }
+    player = players.find { |player| player[:name] == name }
     return [] if player.nil?
     player[:cards].dup
+  end
+
+  def flip_top_card
+    pool.unshift(pool.pop)
+  end
+
+  def reset
+    @pool    = deck.dup
+    @players = []
   end
 
   private
 
   def can_add_more?
-    hands.size < MAX_HANDS
+    players.size < max_players
   end
 
   def add(name)
-    hands.push({
+    players.push({
       name:  name,
       cards: []
     })
   end
 
   def has_players?
-    hands.size > 0
+    players.size > 0
   end
 
   def deal_cards
-    hands.each { |player| player[:cards] = deck.shuffle.pop(MAX_CARDS) }
+    @pool = pool.shuffle
+    players.each { |player| player[:cards] = pool.pop(max_cards) }
   end
 
 end

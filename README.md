@@ -92,6 +92,13 @@ Open your browser and go to http://localhost:9292/
 The `rerun` gem watches for changes in your files and reloads the server.
 
 
+## Comments
+
+It's funny how constants are not constant in Ruby.
+In the `UnoServer` class, I had initially `MAX_PLAYERS = 4` and `MAX_CARDS = 7`.
+I had to change them to `attr_reader :max_players, :max_cards` because the constants can be overwritten.
+
+
 
 ## License
 
