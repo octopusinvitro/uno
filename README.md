@@ -84,10 +84,13 @@ Open your browser and go to http://localhost:4567/
 Update the `config.ru` file, then type
 
 ```bash
-$ rackup
+$ rerun rackup
 ```
 
 Open your browser and go to http://localhost:9292/
+
+The `rerun` gem watches for changes in your files and reloads the server.
+
 
 
 ## License

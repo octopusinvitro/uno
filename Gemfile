@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 gem "sinatra"
 gem "thin"
 gem "rest-client"
+gem "rerun"
 
 group :test do
   gem "rake"

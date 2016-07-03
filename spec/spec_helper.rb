@@ -4,8 +4,8 @@ require 'coveralls'
 Coveralls.wear!
 
 require "sinatra"
-require "rack/test"
 require "json"
+require "rack/test"
 require "rest-client"
 
 require "messages"

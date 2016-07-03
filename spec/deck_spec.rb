@@ -1,65 +1,60 @@
 class DeckTester
-  include Deck
-  def buildDeck
-    Deck.buildDeck
+  attr_reader :deck
+  def initialize
+    @deck = Deck.buildDeck
   end
 end
 
 describe "Deck" do
 
-  let(:deck_tester) {DeckTester.new}
+  let(:deck) {DeckTester.new.deck}
 
-  it "includes the jokers" do
-    special_jokers = "joker joker"
-    expect_deck_to_include(special_jokers)
+  it "includes all reds" do
+    expect_count_to_be(18 + 6 + 2, "red")
   end
 
-  it "includes all diamonds" do
-    diamonds = "2-diamond 3-diamond 4-diamond 5-diamond 6-diamond 7-diamond 8-diamond 9-diamond 10-diamond"
-    expect_deck_to_include(diamonds)
+  it "includes all yellows" do
+    expect_count_to_be(26, "yellow")
   end
 
-  it "includes all hearts" do
-    hearts = "2-heart 3-heart 4-heart 5-heart 6-heart 7-heart 8-heart 9-heart 10-heart"
-    expect_deck_to_include(hearts)
+  it "includes all greens" do
+    expect_count_to_be(26, "green")
   end
 
-  it "includes all clubs" do
-    clubs = "2-club 3-club 4-club 5-club 6-club 7-club 8-club 9-club 10-club"
-    expect_deck_to_include(clubs)
+  it "includes all blues" do
+    expect_count_to_be(26, "blue")
   end
 
-  it "includes all spades" do
-    spades = "2-spade 3-spade 4-spade 5-spade 6-spade 7-spade 8-spade 9-spade 10-spade"
-    expect_deck_to_include(spades)
+  it "includes all skips" do
+    expect_count_to_be(8, "skip")
   end
 
-  it "includes all big diamonds" do
-    special_diamonds = "king-diamond queen-diamond ace-diamond jack-diamond"
-    expect_deck_to_include(special_diamonds)
+  it "includes all reverses" do
+    expect_count_to_be(8, "reverse")
   end
 
-  it "includes all big hearts" do
-    special_hearts = "king-heart queen-heart ace-heart jack-heart"
-    expect_deck_to_include(special_hearts)
+  it "includes all draw2s" do
+    expect_count_to_be(8, "draw2")
   end
 
-  it "includes all big clubs" do
-    special_clubs = "king-club queen-club ace-club jack-club"
-    expect_deck_to_include(special_clubs)
+  it "includes all zeros" do
+    expect_count_to_be(4, "0-")
   end
 
-  it "includes all big spades" do
-    special_spades = "king-spade queen-spade ace-spade jack-spade"
-    expect_deck_to_include(special_spades)
+  it "includes all draw4s" do
+    expect_count_to_be(4, "draw4")
   end
 
-  it "has a total of 54 cards" do
-    expect(deck_tester.buildDeck.length).to eq(54)
+  it "includes all wilds" do
+    expect_count_to_be(4, "wild")
   end
 
-  def expect_deck_to_include(this)
-    expect(deck_tester.buildDeck.join(" ")).to include(this)
+  it "has a total of 108 cards" do
+    expect(deck.length).to eq(108)
+  end
+
+  def expect_count_to_be(count, cards)
+    expect(deck.join(" ").scan(cards).length).to eq(count)
   end
 
 end
