@@ -52,14 +52,13 @@ $ rbenv rehash
 
 ```bash
 $ bundle install
-$ bundle exec rake
 ```
 
 
 ### To run the tests
 
 ```bash
-$ bundle exec rspec --color
+$ bundle exec rspec
 ```
 
 
@@ -84,7 +83,7 @@ Then just type:
 $ bin/app
 ```
 
-Open your browser and go to [http://localhost:4567/](http://localhost:4567/)
+Open your browser and go to [http://localhost:8080/](http://localhost:8080/)
 
 
 ### Another way of running it
