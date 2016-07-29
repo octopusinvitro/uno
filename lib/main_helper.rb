@@ -13,7 +13,7 @@ class MainHelper
   end
 
   def cards_response(params)
-    params.has_key?("name") ? build_cards_response(params) : {}
+    params.has_key?("name") ? cards_success(params) : cards_failure
   end
 
   def max_players
@@ -75,12 +75,16 @@ class MainHelper
     uno.pool.first
   end
 
-  def build_cards_response(params)
+  def cards_success(params)
     cards = see_cards_of(params["name"])
     {
       cards:  cards,
       status: cards_status(cards)
     }
+  end
+
+  def cards_failure
+    {}
   end
 
   def see_cards_of(name)
