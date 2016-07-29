@@ -21,17 +21,17 @@ class Main < Sinatra::Base
     erb :index, locals: main_locals("")
   end
 
-  post "/join", :provides => ['html', 'json'] do
+  post "/join", :provides => ["html", "json"] do
     response = helper.join_response(params)
     request.accept.each do |type|
       case type.to_s
-      when 'text/html'
+      when "text/html"
         if response[:joined]
           halt erb :join, locals: join_locals(params, response)
         else
           halt erb :index, locals: main_locals(response[:status])
         end
-      when 'application/json'
+      when "application/json"
         halt response.to_json
       end
     end
@@ -42,9 +42,9 @@ class Main < Sinatra::Base
     response = helper.deal_response
     request.accept.each do |type|
       case type.to_s
-      when 'text/html'
+      when "text/html"
         halt erb :deal, locals: deal_locals(params, response)
-      when 'application/json'
+      when "application/json"
         halt response.to_json
       end
     end
