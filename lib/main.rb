@@ -29,7 +29,7 @@ class Main < Sinatra::Base
         if response[:joined]
           halt erb :join, locals: join_locals(params, response)
         else
-          halt erb :index, locals: main_locals(response[:status])
+          halt erb :index, locals: main_error_locals(response[:status])
         end
       when "application/json"
         halt response.to_json
@@ -68,6 +68,13 @@ class Main < Sinatra::Base
     {
       title: Messages::MAIN_TITLE,
       join_status: status
+    }
+  end
+
+  def main_error_locals(status)
+    {
+      title: Messages::MAIN_TITLE,
+      join_status: "<p class=\"status\">#{Messages::JOIN_FAILURE}</p>"
     }
   end
 
