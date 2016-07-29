@@ -38,7 +38,7 @@ class Main < Sinatra::Base
 
   end
 
-  get "/deal" do
+  get "/deal", :provides => ["html", "json"] do
     response = helper.deal_response
     request.accept.each do |type|
       case type.to_s
@@ -92,7 +92,7 @@ class Main < Sinatra::Base
     {
       title:       Messages::DEAL_TITLE,
       deal_status: response[:status],
-      players:     response[:players][0..-1],
+      players:     response[:players],
       top_card:    response[:top_card]
     }
   end

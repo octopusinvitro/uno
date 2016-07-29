@@ -3,7 +3,7 @@
 <p>Card over the table is <strong><%= top_card %></strong>.</p>
 
 <ul class="players-joined">
-<% players.each do |player| %>
+<% players[0..-2].each do |player| %>
   <li><%= player[:name] %> played: <strong>card</strong>.</li>
 <% end %>
 </ul>
