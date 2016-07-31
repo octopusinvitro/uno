@@ -22,7 +22,7 @@ class Main < Sinatra::Base
   end
 
   post "/join", :provides => ["html", "json"] do
-    response = helper.join_response(params)
+    response = helper.response_for_join(params)
     request.accept.each do |type|
       case type.to_s
       when "text/html"
@@ -39,7 +39,7 @@ class Main < Sinatra::Base
   end
 
   get "/deal", :provides => ["html", "json"] do
-    response = helper.deal_response
+    response = helper.response_for_deal
     request.accept.each do |type|
       case type.to_s
       when "text/html"
@@ -52,10 +52,10 @@ class Main < Sinatra::Base
 
   get "/cards" do
     @title  = Messages::CARDS_TITLE
-    @status = helper.cards_response(params)[:status]
-    @cards  = helper.cards_response(params)[:cards]
+    @status = helper.response_for_cards(params)[:status]
+    @cards  = helper.response_for_cards(params)[:cards]
 
-    helper.cards_response(params).to_json
+    helper.response_for_cards(params).to_json
   end
 
   private

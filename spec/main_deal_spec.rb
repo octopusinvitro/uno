@@ -53,8 +53,8 @@ describe "Main" do
         it "renders the top card" do
           uno.join_game?("Jane")
           uno.join_game?("Joe")
-          response = {deal_status: "foo", players: uno.players, top_card: "topcard"}
-          allow(helper).to receive(:deal_response).and_return(response)
+          response = {deal_status: "irrelevant", players: uno.players, top_card: "topcard"}
+          allow(helper).to receive(:response_for_deal).and_return(response)
           get "/deal"
           expect(last_response.body).to include(response[:top_card])
         end

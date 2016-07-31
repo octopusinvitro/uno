@@ -4,15 +4,15 @@ class MainHelper
     @uno = uno
   end
 
-  def join_response(params)
+  def response_for_join(params)
     valid?(params) ? join_success : join_failure
   end
 
-  def deal_response
+  def response_for_deal
     deal? ? deal_success : deal_failure
   end
 
-  def cards_response(params)
+  def response_for_cards(params)
     params.has_key?("name") ? cards_success(params) : cards_failure
   end
 
