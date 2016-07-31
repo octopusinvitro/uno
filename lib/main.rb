@@ -43,7 +43,7 @@ class Main < Sinatra::Base
     request.accept.each do |type|
       case type.to_s
       when "text/html"
-        halt erb :deal, locals: deal_locals(params, response)
+        halt erb :deal, locals: deal_locals(response)
       when "application/json"
         halt response.to_json
       end
@@ -88,7 +88,7 @@ class Main < Sinatra::Base
     }
   end
 
-  def deal_locals(params, response)
+  def deal_locals(response)
     {
       title:       Messages::DEAL_TITLE,
       deal_status: response[:status],

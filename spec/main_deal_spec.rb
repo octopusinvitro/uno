@@ -15,7 +15,7 @@ describe "Main" do
         expect_to_have_dealt(true, Messages::DEAL_SUCCESS)
       end
 
-      it "sends an error message if there are no players to deal cards to" do
+      it "errors if there are no players" do
         get "/deal"
         expect_to_have_dealt(false, Messages::DEAL_FAILURE)
       end
@@ -46,7 +46,12 @@ describe "Main" do
         expect(last_response.body).not_to include("Joe")
       end
 
-      describe "" do
+      it "errors if there are no players" do
+        get "/deal"
+        expect(last_response.status).to eq(500)
+      end
+
+      describe "when done" do
         let(:helper) {double(MainHelper)}
         let(:app)    {Main.new(helper)}
 
@@ -60,11 +65,11 @@ describe "Main" do
         end
       end
 
-      # it "renders the players cards" do
-      #   uno.join_game?("Jane")
-      #   get "/deal"
-      #   expect(last_response.body).to include(uno.players.first[:cards].first)
-      # end
+      it "renders the players cards" do
+        uno.join_game?("Jane")
+        get "/deal"
+        expect(last_response.body).to include(uno.players.first[:cards].first)
+      end
     end
   end
 end
