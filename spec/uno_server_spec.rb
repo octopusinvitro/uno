@@ -71,4 +71,12 @@ describe "UnoServer" do
     expect(uno.pool).to eq(uno.deck)
     expect(uno.players).to eq([])
   end
+
+  it "plays a player's turn" do
+    uno.join_game?("Jane")
+    uno.deal?
+    jane = uno.players.first
+    expect(jane[:cards]).to include(uno.play_turn(jane))
+  end
+
 end

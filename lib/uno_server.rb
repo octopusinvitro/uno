@@ -36,6 +36,10 @@ class UnoServer
     @players = []
   end
 
+  def play_turn(player)
+    player[:cards].first
+  end
+
   private
 
   def can_add_more?
