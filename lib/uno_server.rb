@@ -1,11 +1,12 @@
 class UnoServer
 
-  attr_reader :deck, :max_players, :max_cards, :pool, :players
+  attr_reader :deck, :max_players, :max_cards, :pool, :players, :uno
 
-  def initialize
+  def initialize(uno)
     @deck        = Deck.buildDeck
     @max_players = 4
     @max_cards   = 7
+    @uno         = uno
     reset
   end
 
@@ -37,7 +38,7 @@ class UnoServer
   end
 
   def play_turn(player)
-    player[:cards].first
+    uno.play_turn(player)
   end
 
   private

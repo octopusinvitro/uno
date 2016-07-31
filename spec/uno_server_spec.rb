@@ -4,7 +4,7 @@ describe "UnoServer" do
   let(:max_cards) {uno.max_cards}
 
   before(:each) do
-    @uno = UnoServer.new
+    @uno = UnoServer.new(Uno.new)
   end
 
   it "starts with a deck of 108 cards" do

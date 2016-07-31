@@ -1,6 +1,6 @@
 describe "Main" do
 
-  let(:uno) {UnoServer.new}
+  let(:uno) {UnoServer.new(Uno.new)}
   let(:app) {Main.new(MainHelper.new(uno))}
 
   describe "when a player joins the game" do

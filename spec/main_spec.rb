@@ -1,6 +1,6 @@
 describe "Main" do
 
-  let(:uno) {UnoServer.new}
+  let(:uno) {UnoServer.new(Uno.new)}
   let(:app) {Main.new(MainHelper.new(uno))}
 
   it "renders the error page if there is an error" do

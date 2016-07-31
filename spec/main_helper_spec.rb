@@ -1,6 +1,6 @@
 describe "MainHelper" do
 
-  let(:uno)    {UnoServer.new}
+  let(:uno)    {UnoServer.new(Uno.new)}
   let(:helper) {MainHelper.new(uno)}
 
   describe "when asking for the join response" do
