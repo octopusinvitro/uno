@@ -4,6 +4,7 @@ require "rest-client"
 
 require "./lib/messages"
 require "./lib/deck"
+require "./lib/uno"
 require "./lib/uno_server"
 require "./lib/uno_client"
 require "./lib/main_helper"

@@ -10,6 +10,7 @@ require "rest-client"
 
 require "messages"
 require "deck"
+require "uno"
 require "uno_server"
 require "uno_client"
 require "main_helper"
