@@ -73,10 +73,9 @@ describe "UnoServer" do
   end
 
   it "plays a player's turn" do
-    uno.join_game?("Jane")
-    uno.deal?
-    jane = uno.players.first
-    expect(jane[:cards]).to include(uno.play_turn(jane))
+    server.join_game?("Jane")
+    server.deal?
+    cards = server.players.last[:cards]
+    expect(cards).to include(server.play_turn(cards, cards.first))
   end
-
 end

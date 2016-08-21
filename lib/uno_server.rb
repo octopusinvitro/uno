@@ -37,8 +37,8 @@ class UnoServer
     @players = []
   end
 
-  def play_turn(player)
-    uno.play_turn(player)
+  def play_turn(cards, top_card)
+    uno.play_turn(cards, top_card)
   end
 
   private
@@ -62,5 +62,4 @@ class UnoServer
     @pool = pool.shuffle
     players.each { |player| player[:cards] = pool.pop(max_cards) }
   end
-
 end
