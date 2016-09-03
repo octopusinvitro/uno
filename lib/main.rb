@@ -47,7 +47,8 @@ class Main < Sinatra::Base
     request.accept.each do |type|
       case type.to_s
       when "text/html"
-        halt erb :deal, locals: deal_locals(response)
+        @page = Page::Deal.new(response: response)
+        halt erb :deal
       when "application/json"
         halt response.to_json
       end
@@ -66,14 +67,5 @@ class Main < Sinatra::Base
 
   def error_locals
     {title: Messages::NOT_FOUND}
-  end
-
-  def deal_locals(response)
-    {
-      title:       Messages::DEAL_TITLE,
-      deal_status: response[:status],
-      players:     response[:players],
-      top_card:    response[:top_card]
-    }
   end
 end
