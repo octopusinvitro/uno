@@ -18,7 +18,8 @@ class Main < Sinatra::Base
   end
 
   get "/" do
-    erb :index, locals: main_locals("")
+    @page = Page::Index.new
+    erb :index
   end
 
   post "/join", :provides => ["html", "json"] do
