@@ -14,6 +14,8 @@ require "uno_server"
 require "uno_client"
 require "main_helper"
 require "page/index"
+require "page/index"
+require "page/join"
 require "main"
 
 Main.run!.new(MainHelper.new(UnoServer.new(Uno.new)))
