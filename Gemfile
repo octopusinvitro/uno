@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
-gem "sinatra"
+gem 'rack', '<2.0'
+gem 'sinatra'
 gem "thin"
 gem "rest-client"
 gem "rerun"
