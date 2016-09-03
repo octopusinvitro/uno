@@ -65,13 +65,6 @@ class Main < Sinatra::Base
     {title: Messages::NOT_FOUND}
   end
 
-  def main_locals(status)
-    {
-      title: Messages::MAIN_TITLE,
-      join_status: status
-    }
-  end
-
   def main_error_locals(status)
     {
       title: Messages::MAIN_TITLE,

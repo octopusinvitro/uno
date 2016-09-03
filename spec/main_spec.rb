@@ -9,13 +9,6 @@ describe "Main" do
     expect(last_response.body).to include(Messages::NOT_FOUND)
   end
 
-  it "renders the main page" do
-    get "/"
-    expect(last_response).to be_ok
-    expect(last_response.body).to include(Messages::MAIN_TITLE)
-  end
-
-
   describe "when asking for the cards of a player" do
 
     it "gets an existing player's cards" do
