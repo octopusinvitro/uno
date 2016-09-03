@@ -28,7 +28,8 @@ class Main < Sinatra::Base
       case type.to_s
       when "text/html"
         if response[:joined]
-          halt erb :join, locals: join_locals(params, response)
+          @page = Page::Join.new(response: response, params: params)
+          halt erb :join
         else
           halt erb :index, locals: main_error_locals(response[:status])
         end
@@ -69,16 +70,6 @@ class Main < Sinatra::Base
     {
       title: Messages::MAIN_TITLE,
       join_status: "<p class=\"status\">#{Messages::JOIN_FAILURE}</p>"
-    }
-  end
-
-  def join_locals(params, response)
-    {
-      title:       Messages::JOIN_TITLE,
-      name:        params["name"],
-      join_status: response[:status],
-      players:     response[:players],
-      max_players_info: Constants::MAX_PLAYERS_INFO
     }
   end
 

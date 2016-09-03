@@ -1,10 +1,10 @@
-<p class="status"><span>Hey <strong><%= name %></strong>! <%= join_status %> <%= max_players_info %></span></p>
+<p class="status"><span>Hey <strong><%= @page.name %></strong>! <%= @page.join_status %> <%= @page.max_players_info %></span></p>
 
 <p>These players have also joined:</p>
 
 <ul class="players-joined">
-<% players.each do |player| %>
-<%   you = (player == players.last) ? " (you)" : "" %>
+<% @page.players.each do |player| %>
+<%   you = (player == @page.players.last) ? " (you)" : "" %>
   <li><%= player[:name] %><%= you %></li>
 <% end %>
 </ul>
