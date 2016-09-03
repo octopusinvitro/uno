@@ -10,4 +10,4 @@ require "./lib/uno_client"
 require "./lib/main_helper"
 require "./lib/main"
 
-run Main.new(MainHelper.new(UnoServer.new))
+run Main.new(MainHelper.new(UnoServer.new(Uno.new)))
