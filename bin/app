@@ -13,6 +13,7 @@ require "uno"
 require "uno_server"
 require "uno_client"
 require "main_helper"
+require "page/index"
 require "main"
 
 Main.run!.new(MainHelper.new(UnoServer.new(Uno.new)))
