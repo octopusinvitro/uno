@@ -7,6 +7,8 @@ require "sinatra"
 require "json"
 require "rack/test"
 require "rest-client"
+require 'nokogiri'
+require 'pry'
 
 require "constants"
 require "messages"

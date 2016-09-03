@@ -5,6 +5,7 @@ gem 'sinatra'
 gem "thin"
 gem "rest-client"
 gem "rerun"
+gem 'nokogiri', '>= 1.6.7'
 
 group :test do
   gem "rake"
