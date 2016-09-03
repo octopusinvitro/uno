@@ -2,6 +2,7 @@ require "sinatra"
 require "json"
 require "rest-client"
 
+require "./lib/constants"
 require "./lib/messages"
 require "./lib/deck"
 require "./lib/uno"

@@ -6,6 +6,7 @@ require "sinatra"
 require "json"
 require "rest-client"
 
+require "constants"
 require "messages"
 require "deck"
 require "uno"

@@ -8,6 +8,7 @@ require "json"
 require "rack/test"
 require "rest-client"
 
+require "constants"
 require "messages"
 require "deck"
 require "uno"
