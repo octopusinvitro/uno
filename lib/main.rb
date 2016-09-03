@@ -18,7 +18,7 @@ class Main < Sinatra::Base
   end
 
   get "/" do
-    @page = Page::Index.new
+    @page = Page::Index.new(status: "")
     erb :index
   end
 
@@ -31,7 +31,9 @@ class Main < Sinatra::Base
           @page = Page::Join.new(response: response, params: params)
           halt erb :join
         else
-          halt erb :index, locals: main_error_locals(response[:status])
+          status = "<p class=\"status\">#{Messages::JOIN_FAILURE}</p>"
+          @page = Page::Index.new(status: status)
+          halt erb :index
         end
       when "application/json"
         halt response.to_json
@@ -64,13 +66,6 @@ class Main < Sinatra::Base
 
   def error_locals
     {title: Messages::NOT_FOUND}
-  end
-
-  def main_error_locals(status)
-    {
-      title: Messages::MAIN_TITLE,
-      join_status: "<p class=\"status\">#{Messages::JOIN_FAILURE}</p>"
-    }
   end
 
   def deal_locals(response)
