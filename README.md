@@ -115,14 +115,6 @@ $ gulp
 
 By default Sinatra will look for static files inside a `public` folder under the root directory, that's why gulp spits everything in there.
 
-
-## Comments
-
-It's funny how constants are not constant in Ruby.
-In the `UnoServer` class, I had initially `MAX_PLAYERS = 4` and `MAX_CARDS = 7`.
-I had to change them to `attr_reader :max_players, :max_cards` because the constants can be overwritten.
-
-
 ## To do
 
 * [ ] What if a player's name already exists?
