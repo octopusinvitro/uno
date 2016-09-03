@@ -16,10 +16,6 @@ class MainHelper
     params.has_key?("name") ? cards_success(params) : cards_failure
   end
 
-  def max_players
-    uno.max_players
-  end
-
   private
 
   attr_reader :uno

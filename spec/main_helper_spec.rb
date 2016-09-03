@@ -72,6 +72,6 @@ describe "MainHelper" do
   end
 
   it "return the maximum number of players" do
-    expect(helper.max_players).to eq(uno.max_players)
+    expect(helper.max_players).to eq(4)
   end
 end
