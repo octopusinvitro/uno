@@ -1,7 +1,7 @@
 describe "UnoServer" do
 
-  let(:server)       {@server}
-  let(:max_cards) {server.max_cards}
+  let(:server)    {@server}
+  let(:max_cards) {Constants::MAX_CARDS}
 
   before(:each) do
     @server = UnoServer.new(Uno.new)

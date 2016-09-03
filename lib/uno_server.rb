@@ -1,11 +1,9 @@
 class UnoServer
 
-  attr_reader :deck, :max_players, :max_cards, :pool, :players, :uno
+  attr_reader :deck, :pool, :players, :uno
 
   def initialize(uno)
     @deck        = Deck.buildDeck
-    @max_players = 4
-    @max_cards   = 7
     @uno         = uno
     reset
   end
@@ -44,7 +42,7 @@ class UnoServer
   private
 
   def can_add_more?
-    players.size < max_players
+    players.size < Constants::MAX_PLAYERS
   end
 
   def add(name)
@@ -60,6 +58,6 @@ class UnoServer
 
   def deal_cards
     @pool = pool.shuffle
-    players.each { |player| player[:cards] = pool.pop(max_cards) }
+    players.each { |player| player[:cards] = pool.pop(Constants::MAX_CARDS) }
   end
 end
