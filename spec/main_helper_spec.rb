@@ -70,8 +70,4 @@ describe "MainHelper" do
       expect(helper.response_for_cards(params)[:status]).to eq(Messages::CARDS_FAILURE)
     end
   end
-
-  it "return the maximum number of players" do
-    expect(helper.max_players).to eq(4)
-  end
 end

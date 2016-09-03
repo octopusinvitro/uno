@@ -84,7 +84,7 @@ class Main < Sinatra::Base
       name:        params["name"],
       join_status: response[:status],
       players:     response[:players],
-      max_players_info: max_players_info
+      max_players_info: Constants::MAX_PLAYERS_INFO
     }
   end
 
@@ -95,9 +95,5 @@ class Main < Sinatra::Base
       players:     response[:players],
       top_card:    response[:top_card]
     }
-  end
-
-  def max_players_info
-    Messages.max_players_info(helper.max_players)
   end
 end
