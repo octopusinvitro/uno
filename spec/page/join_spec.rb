@@ -1,4 +1,4 @@
-describe "Page::Index" do
+describe "Page::Join" do
   let(:response) { {
     status:  Messages::JOIN_SUCCESS,
     joined:  true,
