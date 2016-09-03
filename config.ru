@@ -11,6 +11,7 @@ require "./lib/uno_client"
 require "./lib/main_helper"
 require "./lib/page/index"
 require "./lib/page/join"
+require "./lib/page/deal"
 require "./lib/main"
 
 run Main.new(MainHelper.new(UnoServer.new(Uno.new)))
