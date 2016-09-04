@@ -53,6 +53,10 @@ describe "Deck" do
     expect(deck.length).to eq(108)
   end
 
+  it "can't be modified" do
+    expect{ DeckTester.new.deck << "foo" }.to raise_error(RuntimeError)
+  end
+
   def expect_count_to_be(count, cards)
     expect(deck.join(" ").scan(cards).length).to eq(count)
   end

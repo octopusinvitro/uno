@@ -11,7 +11,7 @@ module Deck
        all_specials(unique,   card) <<
        all_specials(specials, card) <<
        all_specials(specials, card) ).flatten
-    }).flatten
+    }).flatten.freeze
   end
 
   private
