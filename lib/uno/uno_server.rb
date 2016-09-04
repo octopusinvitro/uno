@@ -30,6 +30,11 @@ class UnoServer
     pool.unshift(pool.pop)
   end
 
+  def top_card
+    flip_top_card
+    pool.first
+  end
+
   def reset
     @pool    = deck.dup
     @players = []

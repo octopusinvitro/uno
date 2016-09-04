@@ -64,6 +64,11 @@ describe "UnoServer" do
     expect(server.pool.first).to eq(top_card)
   end
 
+  it "shows the top card" do
+    top_card = server.pool.last
+    expect(server.top_card).to eq(top_card)
+  end
+
   it "resets the game" do
     server.join_game?("Jane")
     server.deal?
