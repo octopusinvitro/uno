@@ -14,7 +14,8 @@ class Main < Sinatra::Base
 
   not_found do
     status 404
-    erb :oops, locals: error_locals
+    @page = Page::Error.new
+    erb :oops
   end
 
   get "/" do
@@ -67,11 +68,5 @@ class Main < Sinatra::Base
     end
 
     error 406
-  end
-
-  private
-
-  def error_locals
-    {title: Messages::NOT_FOUND}
   end
 end

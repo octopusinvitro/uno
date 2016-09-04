@@ -3,12 +3,6 @@ describe "Main" do
   let(:uno) {UnoServer.new(Uno.new)}
   let(:app) {Main.new(MainHelper.new(uno))}
 
-  it "renders the error page if there is an error" do
-    get "/unknown_path"
-    expect(last_response.status).to eq(404)
-    expect(last_response.body).to include(Messages::NOT_FOUND)
-  end
-
   describe "when asking for the cards of a player" do
 
     it "gets an existing player's cards" do
