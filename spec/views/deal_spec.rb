@@ -60,9 +60,23 @@ describe "Deal View" do
   end
 
   describe "when there are no players" do
-    # it "errors" do
-    #   get "/deal"
-    #   expect(last_response.status).to eq(500)
-    # end
+    it "errors" do
+      header "Accept", "text/html"
+      get "/deal"
+      expect(last_response.status).to eq(500)
+    end
+  end
+
+  describe "when not acceptable MIME type" do
+    it "errors" do
+      get "/deal"
+      expect(last_response.status).to eq(406)
+    end
+
+    it "errors" do
+      header "Accept", "text/xml"
+      get "/deal"
+      expect(last_response.status).to eq(406)
+    end
   end
 end

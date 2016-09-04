@@ -74,4 +74,11 @@ describe "Join View" do
       expect(page.css('body').text).to include(Messages::JOIN_FAILURE)
     end
   end
+
+  describe "when not acceptable MIME type" do
+    it "errors" do
+      post "/join", {"name" => "Jane"}
+      expect(last_response.status).to eq(406)
+    end
+  end
 end
