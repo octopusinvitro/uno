@@ -1,20 +1,6 @@
 describe "MainHelper" do
-
   let(:uno)    {UnoServer.new(Uno.new)}
   let(:helper) {MainHelper.new(uno)}
-
-  describe "when asking for the deal response" do
-    it "returns an error message if there are no players" do
-      expect(helper.response_for_deal[:status]).to eq(Messages::DEAL_FAILURE)
-      expect(helper.response_for_deal[:dealt]).to be(false)
-    end
-
-    it "builds deal message if there are players" do
-      uno.join_game?("Jane")
-      expect(helper.response_for_deal[:status]).to eq(Messages::DEAL_SUCCESS)
-      expect(helper.response_for_deal[:dealt]).to be(true)
-    end
-  end
 
   describe "when asking for the cards response" do
     it "returns nothing if params contains no name" do
