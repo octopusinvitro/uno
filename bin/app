@@ -17,6 +17,7 @@ require "page/index"
 require "page/index"
 require "page/join"
 require "page/deal"
+require "page/cards"
 require "main"
 
 Main.run!.new(MainHelper.new(UnoServer.new(Uno.new)))
