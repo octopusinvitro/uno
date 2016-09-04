@@ -52,13 +52,13 @@ class Main < Sinatra::Base
 
   get "/deal", :provides => ["json"] do
     pass unless request.accept.first.to_s == "application/json"
-    response = helper.response_for_deal
+    response = Response::Deal.new(uno).response
     response.to_json
   end
 
   get "/deal", :provides => ["html"] do
     pass unless request.accept.first.to_s == "text/html"
-    response = helper.response_for_deal
+    response = Response::Deal.new(uno).response
     @page = Page::Deal.new(response: response)
     erb :deal
   end

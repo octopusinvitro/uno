@@ -33,31 +33,13 @@ describe "Deal View" do
       expect(page.css('.players-joined li').last.text).not_to include("Joe")
     end
 
+    it "renders the top card" do
+      expect(page.css('.status + p').last.text).to include(uno.pool.first)
+    end
+
     # it "renders the players cards" do
     #   expect(page.css('.players-joined li').first.text).to include(uno.players.first[:cards].first)
     # end
-  end
-
-  describe "when done" do
-    let(:helper) { double(MainHelper) }
-    let(:app)    { Main.new(uno, helper) }
-
-    before do
-      uno.join_game?("Jane")
-      uno.join_game?("Joe")
-      response = {
-        deal_status: "irrelevant",
-        players:     uno.players,
-        top_card:    "topcard"
-      }
-      allow(helper).to receive(:response_for_deal).and_return(response)
-      header "Accept", "text/html"
-      get "/deal"
-    end
-
-    it "renders the top card" do
-      expect(last_response.body).to include("topcard")
-    end
   end
 
   describe "when there are no players" do
