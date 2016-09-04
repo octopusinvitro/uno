@@ -56,8 +56,17 @@ class Main < Sinatra::Base
 
   get "/cards" do
     response = helper.response_for_cards(params)
-    @page    = Page::Cards.new(response: response)
-    response.to_json
+    request.accept.each do |type|
+      case type.to_s
+      when "text/html"
+        @page = Page::Cards.new(response: response)
+        halt erb :cards
+      when "text/json"
+        halt response.to_json
+      end
+    end
+
+    error 406
   end
 
   private
