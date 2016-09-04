@@ -3,33 +3,6 @@ describe "MainHelper" do
   let(:uno)    {UnoServer.new(Uno.new)}
   let(:helper) {MainHelper.new(uno)}
 
-  describe "when asking for the join response" do
-    it "builds join message if params contains a name" do
-      params   = {"name" => "Jane"}
-      response = {status: Messages::JOIN_SUCCESS, joined: true, players: uno.players}
-      expect(helper.response_for_join(params)).to eq(response)
-    end
-
-    it "returns an error message if the game is full" do
-      fill_the_game
-      params   = {"name" => "Jane"}
-      response = {status: Messages::JOIN_FAILURE, joined: false, players: uno.players}
-      expect(helper.response_for_join(params)).to eq(response)
-    end
-
-    it "returns an error message if the name is empty" do
-      params   = {"name" => ""}
-      response = {status: Messages::JOIN_FAILURE, joined: false, players: []}
-      expect(helper.response_for_join(params)).to eq(response)
-    end
-
-    it "returns an error message if there is no name in the data" do
-      params   = {}
-      response = {status: Messages::JOIN_FAILURE, joined: false, players: []}
-      expect(helper.response_for_join(params)).to eq(response)
-    end
-  end
-
   describe "when asking for the deal response" do
     it "returns an error message if there are no players" do
       expect(helper.response_for_deal[:status]).to eq(Messages::DEAL_FAILURE)
