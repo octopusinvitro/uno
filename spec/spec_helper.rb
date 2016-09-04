@@ -127,31 +127,4 @@ RSpec.configure do |config|
     uno.join_game?("Moe")
     uno.join_game?("May")
   end
-
-  def expect_to_have_joined(joined, status)
-    response = JSON.parse(last_response.body, symbolize_names: true)
-    expect(last_response).to be_ok
-    expect(response[:joined]).to be(joined)
-    expect(response[:status]).to eq(status)
-  end
-
-  def expect_body_to_include(title, status)
-    expect(last_response).to be_ok
-    expect(last_response.body).to include("<title>#{title}</title>")
-    expect(last_response.body).to include("<h2>#{title}</h2>")
-    expect(last_response.body).to include(status)
-  end
-
-  def expect_to_have_dealt(dealt, status)
-    response = JSON.parse(last_response.body, symbolize_names: true)
-    expect(last_response).to be_ok
-    expect(response[:dealt]).to be(dealt)
-    expect(response[:status]).to eq(status)
-  end
-
-  def expect_response_to_eq(expected)
-    response = JSON.parse(last_response.body, symbolize_names: true)
-    expect(last_response).to be_ok
-    expect(response).to eq(expected)
-  end
 end

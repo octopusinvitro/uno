@@ -40,7 +40,6 @@ class Main < Sinatra::Base
   post "/join", :provides => ["html"] do
     pass unless request.accept.first.to_s == "text/html"
     response = helper.response_for_join(params)
-    pass unless !response[:joined]
     status = "<p class=\"status\">#{Messages::JOIN_FAILURE}</p>"
     @page = Page::Index.new(status: status)
     erb :index

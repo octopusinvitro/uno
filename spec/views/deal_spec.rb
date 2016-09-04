@@ -46,7 +46,7 @@ describe "Deal View" do
       uno.join_game?("Joe")
       response = {
         deal_status: "irrelevant",
-        players:     uno.players, 
+        players:     uno.players,
         top_card:    "topcard"
       }
       allow(helper).to receive(:response_for_deal).and_return(response)
