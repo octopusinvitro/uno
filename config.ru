@@ -16,8 +16,6 @@ require "./lib/page/index"
 require "./lib/page/join"
 require "./lib/page/deal"
 require "./lib/page/cards"
-require "./lib/main_helper"
 require "./lib/main"
 
-uno = UnoServer.new(Uno.new)
-run Main.new(uno, MainHelper.new(uno))
+run Main.new(UnoServer.new(Uno.new))

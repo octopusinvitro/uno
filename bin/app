@@ -20,8 +20,6 @@ require "page/index"
 require "page/join"
 require "page/deal"
 require "page/cards"
-require "main_helper"
 require "main"
 
-uno = UnoServer.new(Uno.new)
-Main.run!.new(uno, MainHelper.new(uno))
+Main.run!.new(UnoServer.new(Uno.new))

@@ -1,11 +1,10 @@
 class Main < Sinatra::Base
 
-  attr_reader :uno, :helper
+  attr_reader :uno
 
-  def initialize(app = nil, uno, helper)
+  def initialize(app = nil, uno)
     super(app)
     @uno = uno
-    @helper = helper
   end
 
   set :port, 8080
@@ -69,14 +68,14 @@ class Main < Sinatra::Base
 
   get "/cards", :provides => ["json"] do
     pass unless request.accept.first.to_s == "application/json"
-    response = helper.response_for_cards(params)
+    response = Response::Cards.new(uno).response(params)
     response.to_json
   end
 
   get "/cards", :provides => ["html"] do
     pass unless request.accept.first.to_s == "text/html"
-    response = helper.response_for_cards(params)
-    @page = Page::Cards.new(response: response)
+    response = Response::Cards.new(uno).response(params)
+    @page    = Page::Cards.new(response: response)
     erb :cards
   end
 

@@ -24,12 +24,11 @@ require "page/index"
 require "page/join"
 require "page/deal"
 require "page/cards"
-require "main_helper"
 require "main"
 
 def setup
   uno = UnoServer.new(Uno.new)
-  app = Main.new(uno, MainHelper.new(uno))
+  app = Main.new(uno)
   { uno: uno, app: app }
 end
 
