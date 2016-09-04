@@ -1,11 +1,7 @@
 class Uno
   def play_turn(cards, top_card)
     playable = select_playable(cards, top_card)
-    if playable.empty?
-      has_wild?(cards) ? "wild" : ""
-    else
-      playable[Random.rand(playable.size)]
-    end
+    playable.empty? ? check_for_wild(cards) : choose_random(playable)
   end
 
   private
@@ -19,7 +15,11 @@ class Uno
     (card.include? top_card.split("-").last)
   end
 
-  def has_wild?(cards)
-    cards.include? "wild"
+  def check_for_wild(cards)
+    cards.select { |card| card == "wild" }.first.to_s
+  end
+
+  def choose_random(playable)
+    playable[Random.rand(playable.size)]
   end
 end

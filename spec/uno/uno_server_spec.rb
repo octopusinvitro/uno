@@ -1,11 +1,7 @@
 describe "UnoServer" do
 
-  let(:server)    {@server}
-  let(:max_cards) {Constants::MAX_CARDS}
-
-  before(:each) do
-    @server = UnoServer.new(Uno.new)
-  end
+  let(:server)    { UnoServer.new(Uno.new) }
+  let(:max_cards) { Constants::MAX_CARDS }
 
   it "starts with a deck of 108 cards" do
     expect(server.deck.size).to eq(108)

@@ -3,8 +3,8 @@ class UnoServer
   attr_reader :deck, :pool, :players, :uno
 
   def initialize(uno)
-    @deck        = Deck.buildDeck
-    @uno         = uno
+    @deck = Deck.buildDeck
+    @uno  = uno
     reset
   end
 
@@ -35,13 +35,13 @@ class UnoServer
     pool.first
   end
 
+  def play_turn(cards, top_card)
+    uno.play_turn(cards, top_card)
+  end
+
   def reset
     @pool    = deck.dup
     @players = []
-  end
-
-  def play_turn(cards, top_card)
-    uno.play_turn(cards, top_card)
   end
 
   private
