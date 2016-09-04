@@ -5,7 +5,7 @@ module Response
     end
 
     def response
-      deal? ? deal_success : deal_failure
+      deal? ? success : failure
     end
 
     private
@@ -16,7 +16,7 @@ module Response
       uno.deal?
     end
 
-    def deal_success
+    def success
       {
         status:   Messages::DEAL_SUCCESS,
         dealt:    true,
@@ -25,7 +25,7 @@ module Response
       }
     end
 
-    def deal_failure
+    def failure
       {
         status:   Messages::DEAL_FAILURE,
         dealt:    false,

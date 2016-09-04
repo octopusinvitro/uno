@@ -5,7 +5,7 @@ module Response
     end
 
     def response(params)
-      valid?(params) ? join_success : join_failure
+      valid?(params) ? success : failure
     end
 
     private
@@ -20,7 +20,7 @@ module Response
       uno.join_game?(name)
     end
 
-    def join_success
+    def success
       {
         status:  Messages::JOIN_SUCCESS,
         joined:  true,
@@ -28,7 +28,7 @@ module Response
       }
     end
 
-    def join_failure
+    def failure
       {
         status:  Messages::JOIN_FAILURE,
         joined:  false,
