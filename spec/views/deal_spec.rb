@@ -1,6 +1,6 @@
 describe "Deal View" do
-  let(:uno) { UnoServer.new(Uno.new) }
-  let(:app) { Main.new(MainHelper.new(uno)) }
+  let(:uno)  { UnoServer.new(Uno.new) }
+  let(:app)  { Main.new(MainHelper.new(uno)) }
   let(:page) { Nokogiri::HTML(last_response.body) }
 
   describe "when there are players" do
@@ -41,13 +41,20 @@ describe "Deal View" do
     let(:helper) {double(MainHelper)}
     let(:app)    {Main.new(helper)}
 
-    it "renders the top card" do
+    before do
       uno.join_game?("Jane")
       uno.join_game?("Joe")
-      response = {deal_status: "irrelevant", players: uno.players, top_card: "topcard"}
+      response = {
+        deal_status: "irrelevant",
+        players:     uno.players, 
+        top_card:    "topcard"
+      }
       allow(helper).to receive(:response_for_deal).and_return(response)
       header "Accept", "text/html"
       get "/deal"
+    end
+
+    it "renders the top card" do
       expect(last_response.body).to include("topcard")
     end
   end

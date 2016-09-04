@@ -39,7 +39,6 @@ class Main < Sinatra::Base
         halt response.to_json
       end
     end
-
   end
 
   get "/deal", :provides => ["html", "json"] do
@@ -56,11 +55,9 @@ class Main < Sinatra::Base
   end
 
   get "/cards" do
-    @title  = Messages::CARDS_TITLE
-    @status = helper.response_for_cards(params)[:status]
-    @cards  = helper.response_for_cards(params)[:cards]
-
-    helper.response_for_cards(params).to_json
+    response = helper.response_for_cards(params)
+    @page    = Page::Cards.new(response: response)
+    response.to_json
   end
 
   private
