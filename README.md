@@ -1,5 +1,5 @@
 [![Build Status](https://travis-ci.org/octopusinvitro/uno.svg?branch=master)](https://travis-ci.org/octopusinvitro/uno)
-[![build status](https://gitlab.com/me-stevens/uno/badges/master/build.svg)](https://gitlab.com/me-stevens/uno/commits/master)
+[![build status](https://gitlab.com/octopusinvitro/uno/badges/master/build.svg)](https://gitlab.com/octopusinvitro/uno/commits/master)
 [![Coverage Status](https://coveralls.io/repos/github/octopusinvitro/uno/badge.svg?branch=master)](https://coveralls.io/github/octopusinvitro/uno?branch=master)
 
 # Readme
@@ -121,11 +121,10 @@ By default Sinatra will look for static files inside a `public` folder under the
 * [ ] Possible errors?
 * [x] `UnoServer`'s boolean methods don't have a `?`
 * [ ] Find a way to implement command-query separation in `UnoServer`'s boolean methods
-* [ ] Extract the empty `<p>` tags (i.e. `join_status`) into `locals`, and the `locals` and views logic to a `presenter` object injected in the main.
-* Finish the game AI implementation.
-* Find a way to clean the controller, still too much business logic for my taste.
-* Code climate
-* Push to Heroku
+* [ ] Finish the game AI implementation.
+* [x] Find a way to clean the controller, still too much business logic for my taste.
+* [ ] Code climate
+* [ ] Push to Heroku
 
 
 ## License

@@ -23,25 +23,24 @@ class Main < Sinatra::Base
     erb :index
   end
 
-  post "/join", :provides => ["json"] do
+  post "/join" do
     pass unless request.accept.first.to_s == "application/json"
     response = Response::Join.new(uno).response(params)
     response.to_json
   end
 
-  post "/join", :provides => ["html"] do
-    response = Response::Join.new(uno).response(params)
+  post "/join" do
     pass unless request.accept.first.to_s == "text/html"
+    response = Response::Join.new(uno).response(params)
     pass unless response[:joined]
     @page = Page::Join.new(response: response, params: params)
     erb :join
   end
 
-  post "/join", :provides => ["html"] do
-    response = Response::Join.new(uno).response(params)
+  post "/join" do
     pass unless request.accept.first.to_s == "text/html"
-    status = "<p class=\"status\">#{Messages::JOIN_FAILURE}</p>"
-    @page = Page::Index.new(status: status)
+    response = Response::Join.new(uno).response(params)
+    @page    = Page::Index.new(status: Messages::FAILED_JOIN_STATUS)
     erb :index
   end
 
@@ -49,16 +48,16 @@ class Main < Sinatra::Base
     error 406
   end
 
-  get "/deal", :provides => ["json"] do
+  get "/deal" do
     pass unless request.accept.first.to_s == "application/json"
     response = Response::Deal.new(uno).response
     response.to_json
   end
 
-  get "/deal", :provides => ["html"] do
+  get "/deal" do
     pass unless request.accept.first.to_s == "text/html"
     response = Response::Deal.new(uno).response
-    @page = Page::Deal.new(response: response)
+    @page    = Page::Deal.new(response: response)
     erb :deal
   end
 
@@ -66,13 +65,13 @@ class Main < Sinatra::Base
     error 406
   end
 
-  get "/cards", :provides => ["json"] do
+  get "/cards" do
     pass unless request.accept.first.to_s == "application/json"
     response = Response::Cards.new(uno).response(params)
     response.to_json
   end
 
-  get "/cards", :provides => ["html"] do
+  get "/cards" do
     pass unless request.accept.first.to_s == "text/html"
     response = Response::Cards.new(uno).response(params)
     @page    = Page::Cards.new(response: response)
