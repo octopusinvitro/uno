@@ -1,9 +1,10 @@
 class Main < Sinatra::Base
 
-  attr_reader :helper
+  attr_reader :uno, :helper
 
-  def initialize(app = nil, helper)
+  def initialize(app = nil, uno, helper)
     super(app)
+    @uno = uno
     @helper = helper
   end
 
@@ -25,21 +26,21 @@ class Main < Sinatra::Base
 
   post "/join", :provides => ["json"] do
     pass unless request.accept.first.to_s == "application/json"
-    response = helper.response_for_join(params)
+    response = Response::Join.new(uno).response(params)
     response.to_json
   end
 
   post "/join", :provides => ["html"] do
+    response = Response::Join.new(uno).response(params)
     pass unless request.accept.first.to_s == "text/html"
-    response = helper.response_for_join(params)
     pass unless response[:joined]
     @page = Page::Join.new(response: response, params: params)
     erb :join
   end
 
   post "/join", :provides => ["html"] do
+    response = Response::Join.new(uno).response(params)
     pass unless request.accept.first.to_s == "text/html"
-    response = helper.response_for_join(params)
     status = "<p class=\"status\">#{Messages::JOIN_FAILURE}</p>"
     @page = Page::Index.new(status: status)
     erb :index

@@ -21,4 +21,5 @@ require "page/cards"
 require "main_helper"
 require "main"
 
-Main.run!.new(MainHelper.new(UnoServer.new(Uno.new)))
+uno = UnoServer.new(Uno.new)
+Main.run!.new(uno, MainHelper.new(uno))

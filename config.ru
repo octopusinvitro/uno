@@ -17,4 +17,5 @@ require "./lib/page/cards"
 require "./lib/main_helper"
 require "./lib/main"
 
-run Main.new(MainHelper.new(UnoServer.new(Uno.new)))
+uno = UnoServer.new(Uno.new)
+run Main.new(uno, MainHelper.new(uno))

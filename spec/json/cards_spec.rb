@@ -21,8 +21,14 @@ describe "Cards (JSON)" do
       expect(last_response).to be_ok
       expect(response).to eq(expected)
     end
+  end
 
-    it "sends an error message if player has not joined the game" do
+  describe "when player has not joined the game" do
+    before do
+      header "Accept", "application/json"
+    end
+
+    it "sends an error message" do
       get "/cards", "name" => "Jane"
       response = {
         cards:  [],
