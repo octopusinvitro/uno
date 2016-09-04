@@ -1,6 +1,7 @@
 describe "Deal (JSON)" do
-  let(:uno) {UnoServer.new(Uno.new)}
-  let(:app) {Main.new(MainHelper.new(uno))}
+  let(:s)   { setup }
+  let(:uno) { s[:uno] }
+  let(:app) { s[:app] }
 
   describe "when it's deal time" do
     before do

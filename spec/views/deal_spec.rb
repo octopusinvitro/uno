@@ -1,6 +1,7 @@
 describe "Deal View" do
-  let(:uno)  { UnoServer.new(Uno.new) }
-  let(:app)  { Main.new(MainHelper.new(uno)) }
+  let(:s)    { setup }
+  let(:uno)  { s[:uno] }
+  let(:app)  { s[:app] }
   let(:page) { Nokogiri::HTML(last_response.body) }
 
   describe "when there are players" do
@@ -38,8 +39,8 @@ describe "Deal View" do
   end
 
   describe "when done" do
-    let(:helper) {double(MainHelper)}
-    let(:app)    {Main.new(helper)}
+    let(:helper) { double(MainHelper) }
+    let(:app)    { Main.new(uno, helper) }
 
     before do
       uno.join_game?("Jane")

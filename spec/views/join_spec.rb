@@ -1,6 +1,7 @@
 describe "Join View" do
-  let(:uno)  { UnoServer.new(Uno.new) }
-  let(:app)  { Main.new(MainHelper.new(uno)) }
+  let(:s)    { setup }
+  let(:uno)  { s[:uno] }
+  let(:app)  { s[:app] }
   let(:page) { Nokogiri::HTML(last_response.body) }
 
   describe "when loading is successful" do

@@ -1,6 +1,7 @@
 describe "Join (JSON)" do
-  let(:uno) {UnoServer.new(Uno.new)}
-  let(:app) {Main.new(MainHelper.new(uno))}
+  let(:s)   { setup }
+  let(:uno) { s[:uno] }
+  let(:app) { s[:app] }
 
   describe "when a player joins the game" do
     before do
