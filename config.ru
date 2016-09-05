@@ -20,4 +20,4 @@ require "./lib/page/deal"
 require "./lib/page/cards"
 require "./lib/main"
 
-run Main.new(UnoServer.new(Uno.new))
+run Main.new(UnoServer.new(PlayerFactory.new))

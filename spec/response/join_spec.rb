@@ -1,5 +1,5 @@
 describe "Response::Join" do
-  let(:uno)  { UnoServer.new(Uno.new) }
+  let(:uno)  { UnoServer.new(PlayerFactory.new) }
   let(:join) { Response::Join.new(uno) }
 
   it "builds join message if params contains a name" do

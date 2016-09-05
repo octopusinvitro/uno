@@ -1,5 +1,5 @@
 describe "Response::Deal" do
-  let(:uno)  { UnoServer.new(Uno.new) }
+  let(:uno)  { UnoServer.new(PlayerFactory.new) }
   let(:deal) { Response::Cards.new(uno) }
 
   it "returns nothing if params contains no name" do
