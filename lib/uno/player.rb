@@ -8,11 +8,17 @@ class Player
   end
 
   def play_turn(top_card)
-    playable = select_playable(top_card)
-    playable.empty? ? check_for_wild : choose_random(playable)
+    card = select_card(top_card)
+    play(card)
+    card
   end
 
   private
+
+  def select_card(top_card)
+    playable_cards = select_playable(top_card)
+    playable_cards.empty? ? check_for_wild : choose_random(playable_cards)
+  end
 
   def select_playable(top_card)
     cards.select { |card| same_number_or_color?(card, top_card) }
@@ -27,7 +33,11 @@ class Player
     cards.find { |card| card == "wild" }.to_s
   end
 
-  def choose_random(playable)
-    playable[Random.rand(playable.size)]
+  def choose_random(playable_cards)
+    playable_cards[Random.rand(playable_cards.size)]
+  end
+
+  def play(card)
+    @cards -= [card]
   end
 end

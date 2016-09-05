@@ -4,7 +4,10 @@
 
 <ul class="players-joined">
 <% @page.players[0..-2].each do |player| %>
-  <li><%= player.name %> played: <strong>card</strong>.</li>
+  <li>
+    <%= player.name %> played:
+    <strong><%= player.play_turn(@page.top_card) %></strong>.
+  </li>
 <% end %>
 </ul>
 
