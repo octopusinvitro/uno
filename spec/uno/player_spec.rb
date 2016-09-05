@@ -47,4 +47,10 @@ describe "Player" do
     player.play_turn("3-red")
     expect(player.cards).to eq(cards)
   end
+
+  it "can draw cards" do
+    player = Player.new("", ["3-red"])
+    player.draw(["5-blue", "4-yellow"])
+    expect(player.cards).to eq(["3-red", "5-blue", "4-yellow"])
+  end
 end
