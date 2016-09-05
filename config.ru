@@ -6,8 +6,8 @@ require "./lib/uno/constants"
 require "./lib/uno/deck"
 require "./lib/uno/player"
 require "./lib/uno/player_factory"
-require "./lib/uno/uno_server"
-require "./lib/uno/uno_client"
+require "./lib/uno/server"
+require "./lib/uno/client"
 require "./lib/response/join"
 require "./lib/response/deal"
 require "./lib/response/cards"
@@ -19,4 +19,4 @@ require "./lib/page/deal"
 require "./lib/page/cards"
 require "./lib/main"
 
-run Main.new(UnoServer.new(PlayerFactory.new))
+run Main.new(UNO::Server.new(UNO::PlayerFactory.new))
