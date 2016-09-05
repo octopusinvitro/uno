@@ -14,8 +14,8 @@ require "uno/constants"
 require "uno/deck"
 require "uno/player"
 require "uno/player_factory"
-require "uno/uno_server"
-require "uno/uno_client"
+require "uno/server"
+require "uno/client"
 require "response/join"
 require "response/deal"
 require "response/cards"
@@ -28,7 +28,7 @@ require "page/cards"
 require "main"
 
 def setup
-  uno = UnoServer.new(PlayerFactory.new)
+  uno = UNO::Server.new(UNO::PlayerFactory.new)
   app = Main.new(uno)
   { uno: uno, app: app }
 end

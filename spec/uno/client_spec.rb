@@ -1,8 +1,8 @@
-describe "UnoClient" do
+describe "UNO::Client" do
 
   let(:client) {double(RestClient)}
   let(:url)    {"http://localhost:8080"}
-  let(:uno)    {UnoClient.new({name: "Jon", client: client, base_url: url})}
+  let(:uno)    {UNO::Client.new({name: "Jon", client: client, base_url: url})}
 
   describe "when joining the game" do
 

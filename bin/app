@@ -10,8 +10,8 @@ require "uno/constants"
 require "uno/deck"
 require "uno/player"
 require "uno/player_factory"
-require "uno/uno_server"
-require "uno/uno_client"
+require "uno/server"
+require "uno/client"
 require "response/join"
 require "response/deal"
 require "response/cards"
@@ -23,4 +23,4 @@ require "page/deal"
 require "page/cards"
 require "main"
 
-Main.run!.new(UnoServer.new(PlayerFactory.new))
+Main.run!.new(UNO::Server.new(UNO::PlayerFactory.new))

@@ -1,11 +1,11 @@
 class DeckTester
   attr_reader :deck
   def initialize
-    @deck = Deck.buildDeck
+    @deck = UNO::Deck.buildDeck
   end
 end
 
-describe "Deck" do
+describe "UNO::Deck" do
 
   let(:deck) {DeckTester.new.deck}
 

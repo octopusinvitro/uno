@@ -10,6 +10,6 @@ module Messages
   JOIN_TITLE    = "UNO :: Join the game".freeze
   DEAL_TITLE    = "UNO :: Deal cards".freeze
   CARDS_TITLE   = "UNO :: Get cards".freeze
-  MAX_PLAYERS_INFO = "Remember that there is a maximum of #{Constants::MAX_PLAYERS} players.".freeze
+  MAX_PLAYERS_INFO = "Remember that there is a maximum of #{UNO::Constants::MAX_PLAYERS} players.".freeze
   FAILED_JOIN_STATUS = "<p class=\"status\">#{Messages::JOIN_FAILURE}</p>".freeze
 end

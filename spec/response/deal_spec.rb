@@ -1,5 +1,5 @@
 describe "Response::Deal" do
-  let(:uno)  { UnoServer.new(PlayerFactory.new) }
+  let(:uno)  { UNO::Server.new(UNO::PlayerFactory.new) }
   let(:deal) { Response::Deal.new(uno) }
 
   it "fails if there are no players" do
