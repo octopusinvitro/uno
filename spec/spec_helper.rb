@@ -13,6 +13,7 @@ require 'pry'
 require "uno/constants"
 require "uno/deck"
 require "uno/uno"
+require "uno/player"
 require "uno/uno_server"
 require "uno/uno_client"
 require "response/join"
