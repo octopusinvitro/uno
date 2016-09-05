@@ -4,7 +4,6 @@ require "rest-client"
 
 require "./lib/uno/constants"
 require "./lib/uno/deck"
-require "./lib/uno/uno"
 require "./lib/uno/player"
 require "./lib/uno/player_factory"
 require "./lib/uno/uno_server"
