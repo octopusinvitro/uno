@@ -36,10 +36,6 @@ describe "Deal View" do
     it "renders the top card" do
       expect(page.css('.status + p').last.text).to include(uno.pool.first)
     end
-
-    # it "renders the players cards" do
-    #   expect(page.css('.players-joined li').first.text).to include(uno.players.first[:cards].first)
-    # end
   end
 
   describe "when there are no players" do

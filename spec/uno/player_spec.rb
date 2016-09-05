@@ -33,4 +33,18 @@ describe "Player" do
     cards = ["5-blue", "4-yellow"]
     expect(Player.new("", cards).play_turn(top_card)).to eq("")
   end
+
+  it "removes the card from the players hand" do
+    cards  = ["5-blue", "3-green", "4-yellow"]
+    player = Player.new("", cards)
+    player.play_turn("3-red")
+    expect(player.cards).not_to include("3-green")
+  end
+
+  it "hand is intact if no card to play" do
+    cards  = ["5-blue", "4-yellow"]
+    player = Player.new("", cards)
+    player.play_turn("3-red")
+    expect(player.cards).to eq(cards)
+  end
 end
