@@ -13,6 +13,10 @@ class Player
     card
   end
 
+  def draw(group)
+    @cards += group
+  end
+
   private
 
   def select_card(top_card)
