@@ -5,7 +5,7 @@
 <ul class="players-joined">
 <% @page.players.each do |player| %>
 <%   you = (player == @page.players.last) ? " (you)" : "" %>
-  <li><%= player[:name] %><%= you %></li>
+  <li><%= player.name %><%= you %></li>
 <% end %>
 </ul>
 

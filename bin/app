@@ -24,4 +24,4 @@ require "page/deal"
 require "page/cards"
 require "main"
 
-Main.run!.new(UnoServer.new(Uno.new))
+Main.run!.new(UnoServer.new(PlayerFactory.new))

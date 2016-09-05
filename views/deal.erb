@@ -4,7 +4,7 @@
 
 <ul class="players-joined">
 <% @page.players[0..-2].each do |player| %>
-  <li><%= player[:name] %> played: <strong>card</strong>.</li>
+  <li><%= player.name %> played: <strong>card</strong>.</li>
 <% end %>
 </ul>
 
@@ -13,7 +13,7 @@
 <form action="/cards" method="post">
 
   <ul class="player-cards">
-    <% @page.players.last[:cards].each_with_index do |card, i| %>
+    <% @page.players.last.cards.each_with_index do |card, i| %>
     <li>
       <label class="radio-label">
         <input type="radio" name="player-cards" value="<%= card %>" id="card-<%= i %>" class="visuallyhidden">
