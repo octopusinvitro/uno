@@ -35,6 +35,10 @@ class UnoServer
     pool.first
   end
 
+  def play_turn(cards, top_card)
+    uno.play_turn(cards, top_card)
+  end
+
   def reset
     @pool    = deck.dup
     @players = []
