@@ -1,10 +1,10 @@
 class UnoServer
 
-  attr_reader :deck, :pool, :players, :uno
+  attr_reader :deck, :pool, :players, :factory
 
-  def initialize(uno)
-    @deck = Deck.buildDeck
-    @uno  = uno
+  def initialize(factory)
+    @deck    = Deck.buildDeck
+    @factory = factory
     reset
   end
 
@@ -21,9 +21,9 @@ class UnoServer
   end
 
   def see_cards_of name
-    player = players.find { |player| player[:name] == name }
+    player = players.find { |player| player.name == name }
     return [] if player.nil?
-    player[:cards].dup
+    player.cards.dup
   end
 
   def flip_top_card
@@ -33,10 +33,6 @@ class UnoServer
   def top_card
     flip_top_card
     pool.first
-  end
-
-  def play_turn(cards, top_card)
-    uno.play_turn(cards, top_card)
   end
 
   def reset
@@ -51,10 +47,11 @@ class UnoServer
   end
 
   def add(name)
-    players.push({
-      name:  name,
-      cards: []
-    })
+    players.push(new_player(name, []))
+  end
+
+  def new_player(name, cards)
+    factory.player(name, cards)
   end
 
   def has_players?
@@ -63,6 +60,6 @@ class UnoServer
 
   def deal_cards
     @pool = pool.shuffle
-    players.each { |player| player[:cards] = pool.pop(Constants::MAX_CARDS) }
+    players.each { |player| player.cards = pool.pop(Constants::MAX_CARDS) }
   end
 end

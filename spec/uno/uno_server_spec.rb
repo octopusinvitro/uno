@@ -1,6 +1,6 @@
 describe "UnoServer" do
 
-  let(:server)    { UnoServer.new(Uno.new) }
+  let(:server)    { UnoServer.new(PlayerFactory.new) }
   let(:max_cards) { Constants::MAX_CARDS }
 
   it "starts with a deck of 108 cards" do
@@ -10,7 +10,7 @@ describe "UnoServer" do
   it "allows a player to join the game" do
     server.join_game?("Jane")
     expect(server.players.size).to eq(1)
-    expect(server.players.first[:name]).to eq("Jane")
+    expect(server.players.first.name).to eq("Jane")
   end
 
   it "doesn't allow a player to join if there are four already" do
@@ -33,19 +33,19 @@ describe "UnoServer" do
   it "delivers the maximum cards to each player" do
     server.join_game?("Jane")
     server.deal?
-    expect(server.players.first[:cards].size).to eq(max_cards)
+    expect(server.players.first.cards.size).to eq(max_cards)
   end
 
   it "shuffles the cards" do
     server.join_game?("Jane")
     server.deal?
-    expect(server.players.first[:cards]).not_to eq(server.deck[0...max_cards])
+    expect(server.players.first.cards).not_to eq(server.deck[0...max_cards])
   end
 
   it "sees the cards of a player" do
     server.join_game?("Jane")
     server.deal?
-    expect(server.see_cards_of("Jane")).to eq(server.players.first[:cards])
+    expect(server.see_cards_of("Jane")).to eq(server.players.first.cards)
   end
 
   it "can't see the cards of non-existent player" do
@@ -71,12 +71,5 @@ describe "UnoServer" do
     server.reset
     expect(server.pool).to eq(server.deck)
     expect(server.players).to eq([])
-  end
-
-  it "plays a player's turn" do
-    server.join_game?("Jane")
-    server.deal?
-    cards = server.players.last[:cards]
-    expect(cards).to include(server.play_turn(cards, cards.first))
   end
 end
