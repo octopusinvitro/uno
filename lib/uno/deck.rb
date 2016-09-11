@@ -3,9 +3,9 @@ module UNO
     def self.buildDeck
       colors   = %w(red yellow green blue)
       specials = %w(skip reverse draw2)
-      unique   = %w(0 draw4)
+      unique   = %w(0 draw4 wild)
 
-      %w(wild wild wild wild).concat( colors.map { |color|
+      colors.map { |color|
         (
           all_cards(color) <<
           all_cards(color) <<

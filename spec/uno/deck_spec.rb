@@ -10,19 +10,19 @@ describe "UNO::Deck" do
   let(:deck) {DeckTester.new.deck}
 
   it "includes all reds" do
-    expect_count_to_be(18 + 6 + 2, "red")
+    expect_count_to_be(18 + 6 + 3, "red")
   end
 
   it "includes all yellows" do
-    expect_count_to_be(26, "yellow")
+    expect_count_to_be(27, "yellow")
   end
 
   it "includes all greens" do
-    expect_count_to_be(26, "green")
+    expect_count_to_be(27, "green")
   end
 
   it "includes all blues" do
-    expect_count_to_be(26, "blue")
+    expect_count_to_be(27, "blue")
   end
 
   it "includes all skips" do

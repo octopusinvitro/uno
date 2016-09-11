@@ -35,7 +35,7 @@ module UNO
     end
 
     def check_for_wild
-      cards.find { |card| card == "wild" }.to_s
+      cards.find { |card| card.include? "wild" }.to_s
     end
 
     def choose_random(playable_cards)

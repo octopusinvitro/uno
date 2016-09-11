@@ -17,15 +17,15 @@ describe "UNO::Player" do
 
   it "chooses number or color randomly" do
     top_card       = "3-red"
-    cards          = ["5-blue", "3-green", "4-red", "wild"]
+    cards          = ["5-blue", "3-green", "4-red", "wild-blue"]
     playable_cards = ["3-green", "4-red"]
     expect(playable_cards).to include(UNO::Player.new("", cards).play_turn(top_card))
   end
 
   it "plays wild card if present and has no number or color" do
     top_card = "3-red"
-    cards = ["wild", "5-blue", "4-yellow"]
-    expect(UNO::Player.new("", cards).play_turn(top_card)).to eq("wild")
+    cards    = ["wild-green", "5-blue", "4-yellow"]
+    expect(UNO::Player.new("", cards).play_turn(top_card)).to eq("wild-green")
   end
 
   it "returns nothing if no cards and no wilds" do
