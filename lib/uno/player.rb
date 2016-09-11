@@ -3,7 +3,7 @@ module UNO
     attr_reader   :name
     attr_accessor :cards
 
-    def initialize(name, cards)
+    def initialize(name, cards = [])
       @name  = name
       @cards = cards
     end

@@ -1,6 +1,6 @@
 describe "UNO::Player" do
   it "has a name" do
-    expect(UNO::Player.new("Jane", []).name).to eq("Jane")
+    expect(UNO::Player.new("Jane").name).to eq("Jane")
   end
 
   it "plays a card of the same number" do

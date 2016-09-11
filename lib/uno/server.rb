@@ -48,11 +48,11 @@ module UNO
     end
 
     def add(name)
-      players.push(new_player(name, []))
+      players.push(new_player(name))
     end
 
-    def new_player(name, cards)
-      factory.player(name, cards)
+    def new_player(name)
+      factory.player(name)
     end
 
     def has_players?
