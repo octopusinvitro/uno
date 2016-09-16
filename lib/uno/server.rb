@@ -1,10 +1,11 @@
 module UNO
   class Server
 
-    attr_reader :deck, :pool, :players, :factory
+    attr_reader :players, :factory, :game
 
     def initialize(factory, game)
       @factory = factory
+      @game    = game
       reset
     end
 
@@ -26,17 +27,12 @@ module UNO
       player.cards.dup
     end
 
-    def flip_top_card
-      pool.unshift(pool.pop)
-    end
-
     def top_card
-      flip_top_card
-      pool.first
+      game.top_card
     end
 
     def reset
-      @pool    = deck.dup
+      game.reset
       @players = []
     end
 
@@ -59,8 +55,7 @@ module UNO
     end
 
     def deal_cards
-      @pool = pool.shuffle
-      players.each { |player| player.cards = pool.pop(Constants::MAX_CARDS) }
+      game.deal_cards(players)
     end
   end
 end
