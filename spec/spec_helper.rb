@@ -29,7 +29,7 @@ require "page/cards"
 require "main"
 
 def setup
-  uno = UNO::Server.new(UNO::PlayerFactory.new)
+  uno = UNO::Server.new(UNO::PlayerFactory.new, UNO::Game.new)
   app = Main.new(uno)
   { uno: uno, app: app }
 end

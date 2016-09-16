@@ -3,8 +3,7 @@ module UNO
 
     attr_reader :deck, :pool, :players, :factory
 
-    def initialize(factory)
-      @deck    = Deck.buildDeck
+    def initialize(factory, game)
       @factory = factory
       reset
     end
