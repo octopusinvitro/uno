@@ -29,7 +29,7 @@ describe "Response::Deal" do
 
     it "has the top card" do
       top_card = deal.response[:top_card]
-      expect(uno.pool.first).to eq(top_card)
+      expect(uno.top_card).to eq(top_card)
     end
   end
 end

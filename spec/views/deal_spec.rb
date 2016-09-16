@@ -34,7 +34,7 @@ describe "Deal View" do
     end
 
     it "renders the top card" do
-      expect(page.css('.status + p').last.text).to include(uno.pool.first)
+      expect(page.css('.status + p').last.text).to include(uno.top_card)
     end
   end
 

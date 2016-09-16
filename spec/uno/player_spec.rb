@@ -30,7 +30,7 @@ describe "UNO::Player" do
 
   it "returns nothing if no cards and no wilds" do
     top_card = "3-red"
-    cards = ["5-blue", "4-yellow"]
+    cards    = ["5-blue", "4-yellow"]
     expect(UNO::Player.new("", cards).play_turn(top_card)).to eq("")
   end
 
