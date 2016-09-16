@@ -16,6 +16,22 @@ module UNO
       }.flatten.freeze
     end
 
+    def self.skip?(card)
+      card.include? "skip"
+    end
+
+    def self.draw2?(card)
+      card.include? "draw2"
+    end
+
+    def self.draw4?(card)
+      card.include? "draw4"
+    end
+
+    def self.reverse?(card)
+      card.include? "reverse"
+    end
+
     private
 
     def self.all_cards(color)
