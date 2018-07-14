@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-describe 'Page::Error' do
+RSpec.describe 'Page::Error' do
   let(:page) { Page::Error.new }
 
   it 'has a title' do

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-describe 'Deal View' do
+RSpec.describe 'Deal View' do
   let(:s)    { setup }
   let(:uno)  { s[:uno] }
   let(:app)  { s[:app] }

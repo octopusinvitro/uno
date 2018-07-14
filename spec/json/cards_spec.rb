@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-describe 'Cards (JSON)' do
+RSpec.describe 'Cards (JSON)' do
   let(:s)   { setup }
   let(:uno) { s[:uno] }
   let(:app) { s[:app] }

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-describe 'Page::Deal' do
+RSpec.describe 'Page::Deal' do
   let(:response) do
     {
       status:   Messages::DEAL_SUCCESS,

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-describe 'Join (JSON)' do
+RSpec.describe 'Join (JSON)' do
   let(:s)   { setup }
   let(:uno) { s[:uno] }
   let(:app) { s[:app] }

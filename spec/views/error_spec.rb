@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-describe 'Error View' do
+RSpec.describe 'Error View' do
   let(:s)    { setup }
   let(:uno)  { s[:uno] }
   let(:app)  { s[:app] }

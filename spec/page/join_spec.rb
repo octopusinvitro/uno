@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-describe 'Page::Join' do
+RSpec.describe 'Page::Join' do
   let(:response) do
     {
       status:  Messages::JOIN_SUCCESS,

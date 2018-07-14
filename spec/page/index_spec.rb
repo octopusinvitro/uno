@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-describe 'Page::Index' do
+RSpec.describe 'Page::Index' do
   let(:page) { Page::Index.new(status: 'status') }
 
   it 'has a title' do

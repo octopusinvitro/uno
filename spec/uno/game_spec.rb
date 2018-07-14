@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-describe 'UNO::Game' do
+RSpec.describe 'UNO::Game' do
   let(:mia)  { UNO::Player.new('Mia')  }
   let(:jane) { UNO::Player.new('Jane') }
   let(:joe)  { UNO::Player.new('Joe')  }

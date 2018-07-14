@@ -7,7 +7,7 @@ class DeckTester
   end
 end
 
-describe 'UNO::Deck' do
+RSpec.describe 'UNO::Deck' do
   let(:deck) { DeckTester.new.deck }
 
   describe '#build_deck' do

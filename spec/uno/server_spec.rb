@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-describe 'UNO::Server' do
+RSpec.describe 'UNO::Server' do
   let(:server)    { UNO::Server.new(UNO::PlayerFactory.new, UNO::Game.new) }
   let(:max_cards) { UNO::Constants::MAX_CARDS }
 

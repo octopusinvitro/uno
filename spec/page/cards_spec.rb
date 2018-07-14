@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-describe 'Page::Cards' do
+RSpec.describe 'Page::Cards' do
   let(:response) do
     {
       cards:  [],

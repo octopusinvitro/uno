@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-describe 'Join View' do
+RSpec.describe 'Join View' do
   let(:s)    { setup }
   let(:uno)  { s[:uno] }
   let(:app)  { s[:app] }

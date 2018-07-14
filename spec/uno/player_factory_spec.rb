@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-describe 'UNO::Playerfactory' do
+RSpec.describe 'UNO::Playerfactory' do
   it 'creates a player' do
     jane = UNO::PlayerFactory.new.player('Jane')
     expect(jane.name).to eq('Jane')

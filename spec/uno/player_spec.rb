@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-describe 'UNO::Player' do
+RSpec.describe 'UNO::Player' do
   it 'has a name' do
     expect(UNO::Player.new('Jane').name).to eq('Jane')
   end

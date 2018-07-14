@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-describe 'Response::Deal' do
+RSpec.describe 'Response::Deal' do
   let(:uno)  { UNO::Server.new(UNO::PlayerFactory.new, UNO::Game.new) }
   let(:deal) { Response::Deal.new(uno) }
 

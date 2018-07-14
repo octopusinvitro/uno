@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-describe 'Cards View' do
+RSpec.describe 'Cards View' do
   let(:s)    { setup }
   let(:uno)  { s[:uno] }
   let(:app)  { s[:app] }
