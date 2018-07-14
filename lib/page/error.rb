@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Page
   class Error
     def title

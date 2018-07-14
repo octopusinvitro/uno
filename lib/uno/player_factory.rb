@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module UNO
   class PlayerFactory
     def player(name, cards = [])

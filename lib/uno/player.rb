@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module UNO
   class Player
     attr_reader   :name
@@ -30,12 +32,12 @@ module UNO
     end
 
     def same_number_or_color?(card, top_card)
-      (card.include? top_card.split("-").first) ||
-      (card.include? top_card.split("-").last)
+      (card.include? top_card.split('-').first) ||
+        (card.include? top_card.split('-').last)
     end
 
     def check_for_wild
-      cards.find { |card| card.include? "wild" }.to_s
+      cards.find { |card| card.include? 'wild' }.to_s
     end
 
     def choose_random(playable_cards)

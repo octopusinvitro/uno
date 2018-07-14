@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Response
   class Cards
     def initialize(uno)
@@ -5,7 +7,7 @@ module Response
     end
 
     def response(params)
-      params.has_key?("name") ? success(params) : failure
+      params.key?('name') ? success(params) : failure
     end
 
     private
@@ -13,7 +15,7 @@ module Response
     attr_reader :uno
 
     def success(params)
-      cards = see_cards_of(params["name"])
+      cards = see_cards_of(params['name'])
       {
         cards:  cards,
         status: status(cards)

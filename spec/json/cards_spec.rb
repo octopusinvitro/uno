@@ -1,20 +1,22 @@
-describe "Cards (JSON)" do
+# frozen_string_literal: true
+
+RSpec.describe 'Cards (JSON)' do
   let(:s)   { setup }
   let(:uno) { s[:uno] }
   let(:app) { s[:app] }
 
-  describe "when asking for the cards of a player" do
+  describe 'when asking for the cards of a player' do
     before do
-      uno.join_game?("Jane")
-      uno.join_game?("Joe")
-      header "Accept", "application/json"
+      uno.join_game?('Jane')
+      uno.join_game?('Joe')
+      header 'Accept', 'application/json'
     end
 
     it "gets an existing player's cards" do
       uno.deal?
-      get "/cards", "name" => "Jane"
+      get '/cards', 'name' => 'Jane'
       expected = {
-        cards:  uno.see_cards_of("Jane"),
+        cards:  uno.see_cards_of('Jane'),
         status: Messages::CARDS_SUCCESS
       }
       response = JSON.parse(last_response.body, symbolize_names: true)
@@ -23,13 +25,13 @@ describe "Cards (JSON)" do
     end
   end
 
-  describe "when player has not joined the game" do
+  describe 'when player has not joined the game' do
     before do
-      header "Accept", "application/json"
+      header 'Accept', 'application/json'
     end
 
-    it "sends an error message" do
-      get "/cards", "name" => "Jane"
+    it 'sends an error message' do
+      get '/cards', 'name' => 'Jane'
       response = {
         cards:  [],
         status: Messages::CARDS_FAILURE
@@ -37,8 +39,8 @@ describe "Cards (JSON)" do
       expect_response_to_eq(response)
     end
 
-    it "returns an empty response if no player is sent" do
-      get "/cards"
+    it 'returns an empty response if no player is sent' do
+      get '/cards'
       expect_response_to_eq({})
     end
   end
