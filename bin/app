@@ -3,26 +3,26 @@
 
 $LOAD_PATH.unshift File.join(File.dirname(__FILE__), '..', 'lib')
 
-require "sinatra"
-require "json"
-require "rest-client"
+require 'sinatra'
+require 'json'
+require 'rest-client'
 
-require "uno/constants"
-require "uno/deck"
-require "uno/player"
-require "uno/player_factory"
-require "uno/game"
-require "uno/server"
-require "uno/client"
-require "response/join"
-require "response/deal"
-require "response/cards"
-require "page/messages"
-require "page/error"
-require "page/index"
-require "page/join"
-require "page/deal"
-require "page/cards"
-require "main"
+require 'uno/constants'
+require 'uno/deck'
+require 'uno/player'
+require 'uno/player_factory'
+require 'uno/game'
+require 'uno/server'
+require 'uno/client'
+require 'response/join'
+require 'response/deal'
+require 'response/cards'
+require 'page/messages'
+require 'page/error'
+require 'page/index'
+require 'page/join'
+require 'page/deal'
+require 'page/cards'
+require 'main'
 
 Main.run!.new(UNO::Server.new(UNO::PlayerFactory.new, UNO::Game.new))

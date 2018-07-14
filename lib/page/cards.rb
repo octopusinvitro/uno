@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Page
   class Cards
     def initialize(response:)

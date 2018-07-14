@@ -1,6 +1,7 @@
+# frozen_string_literal: true
+
 module UNO
   class Server
-
     attr_reader :players, :factory, :game
 
     def initialize(factory, game)
@@ -9,22 +10,22 @@ module UNO
       reset
     end
 
-    def join_game? name
+    def join_game?(name)
       player_joined = can_add_more?
       add(name) if player_joined
       player_joined
     end
 
     def deal?
-      can_deal = has_players?
+      can_deal = players?
       deal_cards if can_deal
       can_deal
     end
 
-    def see_cards_of name
-      player = players.find { |player| player.name == name }
-      return [] if player.nil?
-      player.cards.dup
+    def see_cards_of(name)
+      selected_player = players.find { |player| player.name == name }
+      return [] if selected_player.nil?
+      selected_player.cards.dup
     end
 
     def top_card
@@ -50,8 +51,8 @@ module UNO
       factory.player(name)
     end
 
-    def has_players?
-      players.size > 0
+    def players?
+      !players.empty?
     end
 
     def deal_cards

@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 module UNO
   class Game
     attr_reader :pool
 
-    def initialize(deck = Deck.buildDeck)
+    def initialize(deck = Deck.build_deck)
       @deck = deck
       reset
     end
@@ -20,9 +22,9 @@ module UNO
       players.each { |player| player.cards = pool.pop(Constants::MAX_CARDS) }
     end
 
-    def play(players, top)
+    def play(players, top) # rubocop:disable Metrics/MethodLength
       players.map do |player|
-        card = ""
+        card = ''
         if skip?(top)
         elsif draw2?(top)
           draw(player, 2)
@@ -33,7 +35,7 @@ module UNO
           top  = card
           pool.unshift(card)
         end
-        {name: player.name, card: card}
+        { name: player.name, card: card }
       end
     end
 

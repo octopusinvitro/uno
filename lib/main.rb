@@ -1,8 +1,9 @@
-class Main < Sinatra::Base
+# frozen_string_literal: true
 
+class Main < Sinatra::Base
   attr_reader :uno
 
-  def initialize(app = nil, uno)
+  def initialize(uno, app = nil)
     super(app)
     @uno = uno
   end
@@ -18,67 +19,67 @@ class Main < Sinatra::Base
     erb :oops
   end
 
-  get "/" do
-    @page = Page::Index.new(status: "")
+  get '/' do
+    @page = Page::Index.new(status: '')
     erb :index
   end
 
-  post "/join" do
-    pass unless request.accept.first.to_s == "application/json"
+  post '/join' do
+    pass unless request.accept.first.to_s == 'application/json'
     response = Response::Join.new(uno).response(params)
     response.to_json
   end
 
-  post "/join" do
-    pass unless request.accept.first.to_s == "text/html"
+  post '/join' do
+    pass unless request.accept.first.to_s == 'text/html'
     response = Response::Join.new(uno).response(params)
     pass unless response[:joined]
     @page = Page::Join.new(response: response, params: params)
     erb :join
   end
 
-  post "/join" do
-    pass unless request.accept.first.to_s == "text/html"
-    response = Response::Join.new(uno).response(params)
-    @page    = Page::Index.new(status: Messages::FAILED_JOIN_STATUS)
+  post '/join' do
+    pass unless request.accept.first.to_s == 'text/html'
+    Response::Join.new(uno).response(params)
+    @page = Page::Index.new(status: Messages::FAILED_JOIN_STATUS)
     erb :index
   end
 
-  post "/join" do
+  post '/join' do
     error 406
   end
 
-  get "/deal" do
-    pass unless request.accept.first.to_s == "application/json"
+  get '/deal' do
+    pass unless request.accept.first.to_s == 'application/json'
     response = Response::Deal.new(uno).response
     response.to_json
   end
 
-  get "/deal" do
-    pass unless request.accept.first.to_s == "text/html"
+  get '/deal' do
+    pass unless request.accept.first.to_s == 'text/html'
     response = Response::Deal.new(uno).response
-    @page    = Page::Deal.new(response: response)
+    @page = Page::Deal.new(response: response)
     erb :deal
   end
 
-  get "/deal" do
+  get '/deal' do
     error 406
   end
 
-  get "/cards" do
-    pass unless request.accept.first.to_s == "application/json"
+  get '/cards' do
+    pass unless request.accept.first.to_s == 'application/json'
     response = Response::Cards.new(uno).response(params)
     response.to_json
   end
 
-  get "/cards" do
-    pass unless request.accept.first.to_s == "text/html"
+  get '/cards' do
+    pass unless request.accept.first.to_s == 'text/html'
     response = Response::Cards.new(uno).response(params)
-    @page    = Page::Cards.new(response: response)
+    @page = Page::Cards.new(response: response)
     erb :cards
   end
 
-  get "/cards" do
+  get '/cards' do
     error 406
   end
 end

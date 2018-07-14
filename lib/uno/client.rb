@@ -1,23 +1,24 @@
+# frozen_string_literal: true
+
 module UNO
   class Client
-
     def initialize(options = {})
-      @name     = options.fetch(:name,     "No name")
+      @name     = options.fetch(:name,     'No name')
       @client   = options.fetch(:client,   RestClient)
-      @base_url = options.fetch(:base_url, "http://localhost:4567")
+      @base_url = options.fetch(:base_url, 'http://localhost:4567')
     end
 
     def join_game
-      response = post( base_url + "/join", post_params( {name: name} ) )
-      parse(response, {symbolize_names: true})
+      response = post(base_url + '/join', post_params(name: name))
+      parse(response, symbolize_names: true)
     end
 
-    def get_cards
-      get( base_url + "/cards", get_params( {name: name} ) )
+    def cards
+      get(base_url + '/cards', get_params(name: name))
     end
 
     def deal
-      post( base_url + "/deal", post_params( {} ) )
+      post(base_url + '/deal', post_params({}))
     end
 
     private

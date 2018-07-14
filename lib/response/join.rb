@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Response
   class Join
     def initialize(uno)
@@ -13,7 +15,9 @@ module Response
     attr_reader :uno
 
     def valid?(params)
-      params.has_key?("name") && !params["name"].empty? && join_game?(params["name"])
+      params.key?('name') &&
+        !params['name'].empty? &&
+        join_game?(params['name'])
     end
 
     def join_game?(name)

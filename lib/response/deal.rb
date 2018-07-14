@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Response
   class Deal
     def initialize(uno)
@@ -30,7 +32,7 @@ module Response
         status:   Messages::DEAL_FAILURE,
         dealt:    false,
         players:  players,
-        top_card: ""
+        top_card: ''
       }
     end
 
