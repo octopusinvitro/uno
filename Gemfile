@@ -1,4 +1,7 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
+ruby '2.5.1'
 
 gem 'rack', '<2.0'
 gem 'sinatra'
@@ -13,4 +16,8 @@ group :test do
   gem "rspec",  ">=3.4.0", :require => "spec"
   gem "pry"
   gem 'coveralls', require: false
+  gem 'pry'
+  gem 'rake'
+  gem 'rspec'
+  gem 'rubocop', require: false
 end

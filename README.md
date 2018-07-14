@@ -1,6 +1,9 @@
 [![Build Status](https://travis-ci.org/octopusinvitro/uno.svg?branch=master)](https://travis-ci.org/octopusinvitro/uno)
 [![build status](https://gitlab.com/octopusinvitro/uno/badges/master/build.svg)](https://gitlab.com/octopusinvitro/uno/commits/master)
 [![Coverage Status](https://coveralls.io/repos/github/octopusinvitro/uno/badge.svg?branch=master)](https://coveralls.io/github/octopusinvitro/uno?branch=master)
+[![Maintainability](https://api.codeclimate.com/v1/badges/c1543d06c03b772cf815/maintainability)](https://codeclimate.com/github/octopusinvitro/uno/maintainability)
+[![Dependency status](https://badges.depfu.com/badges/fc58073317c29d57335686f49a399e41/overview.svg)](https://depfu.com/github/octopusinvitro/uno?project=Bundler)
+
 
 # Readme
 
@@ -62,7 +65,7 @@ $ bundle exec rspec
 ```
 
 
-### Another way of running them
+### To run the tests and rubocop
 
 ```bash
 $ bundle exec rake
@@ -91,7 +94,7 @@ Open your browser and go to [http://localhost:8080/](http://localhost:8080/)
 Update the `config.ru` file, then type
 
 ```bash
-$ rerun rackup
+$ bundle exec rerun rackup
 ```
 
 Open your browser and go to [http://localhost:9292/](http://localhost:9292/)
