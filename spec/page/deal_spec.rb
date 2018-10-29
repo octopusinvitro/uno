@@ -3,9 +3,9 @@
 RSpec.describe 'Page::Deal' do
   let(:response) do
     {
-      status:   Messages::DEAL_SUCCESS,
-      dealt:    true,
-      players:  [],
+      status: Messages::DEAL_SUCCESS,
+      dealt: true,
+      players: [],
       top_card: 'top card'
     }
   end

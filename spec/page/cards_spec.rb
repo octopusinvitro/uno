@@ -3,7 +3,7 @@
 RSpec.describe 'Page::Cards' do
   let(:response) do
     {
-      cards:  [],
+      cards: [],
       status: Messages::CARDS_SUCCESS
     }
   end

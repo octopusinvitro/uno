@@ -17,7 +17,7 @@ module Response
     def success(params)
       cards = see_cards_of(params['name'])
       {
-        cards:  cards,
+        cards: cards,
         status: status(cards)
       }
     end

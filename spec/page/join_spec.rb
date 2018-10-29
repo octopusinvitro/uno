@@ -3,8 +3,8 @@
 RSpec.describe 'Page::Join' do
   let(:response) do
     {
-      status:  Messages::JOIN_SUCCESS,
-      joined:  true,
+      status: Messages::JOIN_SUCCESS,
+      joined: true,
       players: []
     }
   end

@@ -6,9 +6,9 @@ RSpec.describe 'Response::Deal' do
 
   it 'fails if there are no players' do
     response = {
-      status:   Messages::DEAL_FAILURE,
-      dealt:    false,
-      players:  [],
+      status: Messages::DEAL_FAILURE,
+      dealt: false,
+      players: [],
       top_card: ''
     }
     expect(deal.response).to eq(response)

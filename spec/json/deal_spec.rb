@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 RSpec.describe 'Deal (JSON)' do
-  let(:s)   { setup }
+  let(:s) { setup }
   let(:uno) { s[:uno] }
   let(:app) { s[:app] }
 

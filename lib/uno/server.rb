@@ -6,7 +6,7 @@ module UNO
 
     def initialize(factory, game)
       @factory = factory
-      @game    = game
+      @game = game
       reset
     end
 
@@ -25,6 +25,7 @@ module UNO
     def see_cards_of(name)
       selected_player = players.find { |player| player.name == name }
       return [] if selected_player.nil?
+
       selected_player.cards.dup
     end
 

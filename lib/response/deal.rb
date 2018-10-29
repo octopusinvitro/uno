@@ -20,18 +20,18 @@ module Response
 
     def success
       {
-        status:   Messages::DEAL_SUCCESS,
-        dealt:    true,
-        players:  players,
+        status: Messages::DEAL_SUCCESS,
+        dealt: true,
+        players: players,
         top_card: top_card
       }
     end
 
     def failure
       {
-        status:   Messages::DEAL_FAILURE,
-        dealt:    false,
-        players:  players,
+        status: Messages::DEAL_FAILURE,
+        dealt: false,
+        players: players,
         top_card: ''
       }
     end

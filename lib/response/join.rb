@@ -26,16 +26,16 @@ module Response
 
     def success
       {
-        status:  Messages::JOIN_SUCCESS,
-        joined:  true,
+        status: Messages::JOIN_SUCCESS,
+        joined: true,
         players: uno.players
       }
     end
 
     def failure
       {
-        status:  Messages::JOIN_FAILURE,
-        joined:  false,
+        status: Messages::JOIN_FAILURE,
+        joined: false,
         players: uno.players
       }
     end

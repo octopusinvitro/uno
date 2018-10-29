@@ -39,7 +39,7 @@ module UNO
 
     def post_params(data)
       {
-        data:   data.to_json,
+        data: data.to_json,
         accept: :json
       }
     end

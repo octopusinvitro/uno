@@ -16,7 +16,7 @@ RSpec.describe 'Cards (JSON)' do
       uno.deal?
       get '/cards', 'name' => 'Jane'
       expected = {
-        cards:  uno.see_cards_of('Jane'),
+        cards: uno.see_cards_of('Jane'),
         status: Messages::CARDS_SUCCESS
       }
       response = JSON.parse(last_response.body, symbolize_names: true)
@@ -33,7 +33,7 @@ RSpec.describe 'Cards (JSON)' do
     it 'sends an error message' do
       get '/cards', 'name' => 'Jane'
       response = {
-        cards:  [],
+        cards: [],
         status: Messages::CARDS_FAILURE
       }
       expect_response_to_eq(response)
